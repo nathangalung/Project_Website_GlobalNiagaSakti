@@ -15,13 +15,15 @@ export default {
         },
         fontSize: {
           // Desktop
-          'h1': ['36px', { lineHeight: '44px', fontWeight: '700' }],
+          'h1': ['36px', { lineHeight: '48px', fontWeight: '700' }],
           'h2': ['32px', { lineHeight: '40px', fontWeight: '700' }],
-          'h3': ['28px', { lineHeight: '36px', fontWeight: '700' }],
+          'h3': ['28px', { lineHeight: '40px', fontWeight: '700' }],
           'h4': ['24px', { lineHeight: '32px', fontWeight: '700' }],
-          'body1': ['20px', { lineHeight: '30px', fontWeight: '600' }],
-          'body2': ['20px', { lineHeight: '30px', fontWeight: '400' }],
-          'body3': ['16px', { lineHeight: '24px', fontWeight: '600' }],
+          'h5': ['20px', { lineHeight: '32px', fontWeight: '700' }],
+
+          'body1': ['20px', { lineHeight: '28px', fontWeight: '700' }],
+          'body2': ['20px', { lineHeight: '28px', fontWeight: '400' }],
+          'body3': ['16px', { lineHeight: '24px', fontWeight: '700' }],
           'body4': ['16px', { lineHeight: '24px', fontWeight: '400' }],
           
           // Mobile (70% of desktop size)

@@ -1,9 +1,9 @@
 ---
 const navItems = [
-  { path: '/', name: 'Home', position: '45%' },
-  { path: '/about', name: 'About Us', position: '54%' },
-  { path: '/product', name: 'Products', position: '63%' },
-  { path: '/customer', name: 'Customers', position: '72%' },
+  { path: '/', name: 'Home', position: '46%' },
+  { path: '/about', name: 'About Us', position: '53%' },
+  { path: '/product', name: 'Products', position: '62%' },
+  { path: '/customer', name: 'Customers', position: '71%' },
   { path: '/contact', name: 'Contact', position: '81%' },
 ];
 ---
@@ -22,13 +22,13 @@ const navItems = [
   </div>
 
   <!-- Main content container -->
-  <div class="max-w-[1440px] h-full mx-auto relative">
+  <div class="max-w mx-auto px-[5%] h-full relative">
     <!-- Logo and company name -->
-    <div class="absolute top-1/2 -translate-y-1/2 flex items-center gap-3 z-20">
+    <div class="absolute top-1/2 -translate-y-1/2 flex items-center gap z-20">
       <img 
         src="/images/logo/Color.png" 
         alt="Company Logo" 
-        class="h-12 w-auto"
+        class="h-20 w-auto"
       />
       <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 whitespace-nowrap">
         PT GLOBAL NIAGA SAKTI
@@ -49,12 +49,12 @@ const navItems = [
 
       <!-- Language Selector -->
       <div 
-        class="absolute top-1/2 -translate-y-1/2 z-30" 
-        style="right: 2%"
+        class="absolute top-1/2 -translate-y-1/2"
+        style="right: 5%; z-index: 9999;"
         id="languageSelector"
       >
         <button 
-          class="h-[40px] px-5 bg-white rounded-md flex items-center gap-2 text-body1 text-primary-1"
+          class="h-[40px] w-[90px] px-5 bg-white rounded-md flex items-center justify-between text-body3 md:text-h5 text-primary-1 relative"
           id="languageButton"
         >
           <span id="selectedLang">EN</span>
@@ -68,27 +68,28 @@ const navItems = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </button>
+      </div>
 
-        <!-- Dropdown menu -->
-        <div 
-          class="absolute right-0 mt-2 w-[240px] hidden"
-          id="langDropdown"
-        >
-          <div class="bg-white rounded-lg shadow-xl border border-gray-100">
-            <button 
-              class="w-full px-5 py-3 text-left text-body1 text-primary-1 hover:bg-gray-50 transition-colors"
-              data-lang="ID"
-            >
-              Bahasa Indonesia
-            </button>
-            <div class="w-full h-[1px] bg-gray-100"></div>
-            <button 
-              class="w-full px-5 py-3 text-left text-body1 text-primary-1 hover:bg-gray-50 transition-colors"
-              data-lang="EN"
-            >
-              English
-            </button>
-          </div>
+      <!-- Moved dropdown outside header for better positioning -->
+      <div 
+        class="fixed hidden w-[205px]"
+        id="langDropdown"
+        style="z-index: 99999;"
+      >
+        <div class="bg-primary-2 rounded-lg shadow-xl">
+          <button 
+            class="w-full px-4 py-1 text-left text-body3 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
+            data-lang="ID"
+          >
+            <span class="group-data-[selected=true]:underline">Bahasa Indonesia</span>
+          </button>
+          <div class="w-full h-[1px] bg-white/20"></div>
+          <button 
+            class="w-full px-4 py-1 text-left text-body3 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
+            data-lang="EN"
+          >
+            <span class="group-data-[selected=true]:underline">English</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -134,7 +135,6 @@ const navItems = [
 </header>
 
 <script>
-  // Language selector functionality
   const languageButton = document.getElementById('languageButton');
   const langDropdown = document.getElementById('langDropdown');
   const selectedLang = document.getElementById('selectedLang');
@@ -143,18 +143,53 @@ const navItems = [
 
   let isOpen = false;
 
+  // Add positioning logic
+  function updateDropdownPosition() {
+    const button = document.getElementById('languageButton');
+    const dropdown = document.getElementById('langDropdown');
+    
+    if (button && dropdown) {
+      const rect = button.getBoundingClientRect();
+      dropdown.style.top = `${rect.bottom + 8}px`;
+      dropdown.style.right = '5%';
+    }
+  }
+
   languageButton?.addEventListener('click', (e) => {
     e.stopPropagation();
     isOpen = !isOpen;
     langDropdown?.classList.toggle('hidden', !isOpen);
     langArrow?.classList.toggle('rotate-180', isOpen);
+    if (isOpen) {
+      updateDropdownPosition();
+    }
+  });
+
+  // Update position on scroll and resize
+  window.addEventListener('scroll', () => {
+    if (isOpen) {
+      updateDropdownPosition();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (isOpen) {
+      updateDropdownPosition();
+    }
   });
 
   langButtons.forEach(button => {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
       const lang = (e.currentTarget as HTMLButtonElement).dataset.lang;
-      if (selectedLang) selectedLang.textContent = lang;
+      if (selectedLang) {
+        if (lang) {
+          selectedLang.textContent = lang;
+        }
+        // Add selected state
+        langButtons.forEach(btn => btn.removeAttribute('data-selected'));
+        button.setAttribute('data-selected', 'true');
+      }
       isOpen = false;
       langDropdown?.classList.add('hidden');
       langArrow?.classList.remove('rotate-180');

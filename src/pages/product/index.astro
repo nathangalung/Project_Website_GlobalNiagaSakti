@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const products = [
+  {
+    title: 'Cabin Supplies',
+    description: 'Top-notch cabin essentials tailored to provide comfort and convenience for marine crews.',
+    image: '/src/assets/product/Cabin.png'
+  },
+  {
+    title: 'Deck Supplies',
+    description: 'A complete range of deck equipment and maintenance tools to ensure peak vessel performance.',
+    image: '/src/assets/product/Deck.png'
+  },
+  {
+    title: 'Electric Supplies',
+    description: 'Cutting-edge electrical components and systems designed for marine applications.',
+    image: '/src/assets/product/Electric.png'
+  },
+  {
+    title: 'Sealing Element',
+    description: 'Premium sealing tools and components designed for marine applications.',
+    image: '/src/assets/product/Sealing.png'
+  },
+  {
+    title: 'Safety Equipment',
+    description: 'High-quality safety gear designed to ensure the well-being of crews in marine and offshore operations.',
+    image: '/src/assets/product/Safety.png'
+  },
+  {
+    title: 'Engine Supplies',
+    description: 'A wide range of engine components and accessories designed for marine use.',
+    image: '/src/assets/product/Engine.png'
+  }
+];
+---
+
+<Layout title="Our Products - PT Global Niaga Sakti" description="Explore our range of high-quality marine products">
+  <div class="min-h-[calc(100vh-396px)] bg-white py-12">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
+      <h3 class="text-[32px] md:text-h3 font-bold text-primary-1 text-center mb-12">
+        Explore our range of high-quality products designed to meet the needs of diverse industries.
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1280px] mx-auto">
+        {products.map(product => (
+          <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col">
+            <div class="p-8 flex items-center justify-center h-[240px] bg-white">
+              <img 
+                src={product.image} 
+                alt={product.title}
+                class="max-w-[80%] max-h-[80%] object-contain transform scale-150"
+                loading="lazy"
+              />
+            </div>
+            <div class="bg-primary-1 text-white p-6 flex-1 flex flex-col items-center">
+              <h4 class="text-[24px] md:text-h4 font-bold mb-3 text-center">
+                {product.title}
+              </h4>
+              <p class="text-body2 text-center">
+                {product.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+</style>

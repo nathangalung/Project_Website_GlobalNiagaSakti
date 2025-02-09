@@ -4,75 +4,78 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="Contact Us - PT Global Niaga Sakti" description="Get in touch with PT Global Niaga Sakti">
   <div class="min-h-[calc(100vh-396px)] bg-white py-12 md:py-16">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12">
+    <div class="max-w-[1280px] mx-auto">
       <!-- Heading -->
-      <h1 class="text-[28px] md:text-[32px] font-bold text-primary-1 text-center mb-12">
+      <h1 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-12">
         Our team is ready to assist with expert support and solutions.
       </h1>
 
       <!-- Contact Form and Info Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         <!-- Contact Form -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6 h-fit">
           <!-- Full Name -->
           <div class="flex flex-col gap-2">
-            <h4 class="text-[24px] md:text-h4 font-bold text-primary-1">
+            <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold text-primary-1">
               Full Name
             </h4>
             <input 
               type="text" 
               id="fullName"
               placeholder="Ex. John Doe"
-              class="w-full px-4 py-3 rounded border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 text-[16px] text-body4"
+              class="w-full px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 placeholder:text-primary-2 text-primary-1 text-body4"
             />
           </div>
 
           <!-- Email -->
           <div class="flex flex-col gap-2">
-            <h4 class="text-[24px] md:text-h4 font-bold text-primary-1">
+            <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold text-primary-1">
               Email
             </h4>
             <input 
               type="email" 
               id="email"
               placeholder="Ex. johndoe@gmail.com"
-              class="w-full px-4 py-3 rounded border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 text-[16px] text-body4"
+              class="w-full px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 placeholder:text-primary-2 text-primary-1 text-body4"
             />
           </div>
 
           <!-- Message -->
           <div class="flex flex-col gap-2">
-            <h4 class="text-[24px] md:text-h4 font-bold text-primary-1">
+            <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold text-primary-1">
               Message
             </h4>
             <textarea 
               id="message"
               rows="6"
-              class="w-full px-4 py-3 rounded border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 resize-none text-[16px] text-body4"
+              placeholder="Ex. I want to ask a question"
+              class="w-full h-[144px] px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 resize-none text-body4 placeholder:text-primary-2 text-primary-1"
             ></textarea>
           </div>
 
           <!-- Submit Button -->
-          <button 
-            type="submit"
-            class="px-12 py-3 bg-primary-1 text-white rounded hover:bg-primary-1/90 transition-colors text-[24px] md:text-h4 font-bold"
-          >
-            Send
-          </button>
+          <div class="flex justify-center">
+            <button 
+              type="submit"
+              class="px-12 py-3 bg-primary-1 text-white rounded-lg hover:bg-primary-1/90 transition-colors text-b1 sm:text-h5 md:text-h4"
+            >
+              Send
+            </button>
+          </div>
         </div>
 
         <!-- Contact Information -->
-        <div class="bg-[#F8F9FF] rounded-lg p-8 md:p-10 h-fit">
-          <h4 class="text-[24px] md:text-h4 font-bold text-primary-1 mb-8">
+        <div class="bg-primary-2/10 rounded-lg p-8 md:p-10 h-fit border border-primary-1">
+          <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold text-primary-1 mb-8">
             PT Global Niaga Sakti
           </h4>
 
           <!-- Office -->
           <div class="mb-8">
-            <h5 class="text-[20px] md:text-h5 font-semibold text-primary-1 mb-3">
+            <h5 class="text-body1 md:text-h5 font-semibold text-primary-1 mb-3">
               OFFICE
             </h5>
-            <address class="text-[18px] md:text-body2 text-primary-1 not-italic leading-relaxed">
+            <address class="text-body4 md:text-body2 text-primary-1 not-italic leading-relaxed">
               Gedung Wirausaha Lantai 1, Unit 104<br />
               Jl. HR. Rasuna Said Kav. C5<br />
               Kuningan, Setiabudi<br />
@@ -82,10 +85,10 @@ import Layout from '../../layouts/Layout.astro';
 
           <!-- Contact -->
           <div class="mb-8">
-            <h5 class="text-[20px] md:text-h5 font-semibold text-primary-1 mb-3">
+            <h5 class="text-body1 md:text-h5 font-semibold text-primary-1 mb-3">
               CONTACT
             </h5>
-            <div class="text-[18px] md:text-body1 text-primary-1 leading-relaxed">
+            <div class="text-body3 md:text-body1 text-primary-1 leading-relaxed">
               <p>Call Center : 021-5099 6969 (ext. 1249)</p>
               <p>Whatsapp : 0811-999-0991 (Chat Only)</p>
             </div>
@@ -93,12 +96,12 @@ import Layout from '../../layouts/Layout.astro';
 
           <!-- Email -->
           <div>
-            <h5 class="text-[20px] md:text-h5 font-semibold text-primary-1 mb-3">
+            <h5 class="text-body1 md:text-h5 font-semibold text-primary-1 mb-3">
               EMAIL
             </h5>
             <a 
               href="mailto:sales@globalsakti.com"
-              class="text-[18px] md:text-body1 text-primary-1 hover:underline"
+              class="text-body3 md:text-body1 text-primary-1 hover:underline"
             >
               sales@globalsakti.com
             </a>

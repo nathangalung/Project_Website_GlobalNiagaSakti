@@ -45,11 +45,11 @@ const products = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1280px] mx-auto">
         {products.map(product => (
           <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow">
-            <div class="p-8 flex items-center justify-center h-[240px] bg-primary-2/10">
+            <div class="p-6 flex items-center justify-center h-[180px] bg-primary-2/20">
               <img 
                 src={product.image} 
                 alt={product.title}
-                class="max-w-[80%] max-h-[80%] object-contain transform scale-150"
+                class="max-w-[90%] max-h-[90%] object-contain transform scale-150"
                 loading="lazy"
               />
             </div>

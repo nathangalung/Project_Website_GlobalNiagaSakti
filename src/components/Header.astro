@@ -11,12 +11,12 @@ const navItems = [
 <header class="w-full h-[100px] relative overflow-hidden font-inter">
   <!-- Background containers -->
   <div class="absolute inset-0">
-    <!-- White section -->
-    <div class="absolute top-0 left-0 h-[100px] w-[39%] bg-white">
-      <div class="absolute top-0 right-[-50px] h-[100px] w-[100px] bg-white transform origin-top-right -skew-x-[20deg]"></div>
+    <!-- White section - full width on mobile -->
+    <div class="absolute top-0 left-0 h-[100px] w-full lg:w-[40%] bg-white">
+      <div class="absolute top-0 right-[-50px] h-[100px] w-[100px] bg-white transform origin-top-right -skew-x-[20deg] hidden lg:block"></div>
     </div>
-    <!-- Navy blue section -->
-    <div class="absolute top-0 right-0 h-[100px] w-[61%] bg-primary-1">
+    <!-- Navy blue section - hidden on mobile -->
+    <div class="absolute top-0 right-0 h-[100px] w-[60%] bg-primary-1 hidden lg:block">
       <div class="absolute top-0 left-[-50px] h-[100px] w-[100px] bg-primary-1 transform origin-top-left skew-x-[20deg]"></div>
     </div>
   </div>
@@ -28,7 +28,7 @@ const navItems = [
       <img 
         src="/images/logo/Color.png" 
         alt="Company Logo" 
-        class="h-20 w-auto"
+        class="h-10 md:h-20 w-auto"
       />
       <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 whitespace-nowrap">
         PT GLOBAL NIAGA SAKTI
@@ -115,23 +115,82 @@ const navItems = [
       </svg>
     </button>
 
-    <!-- Mobile Menu -->
     <div 
-      class="lg:hidden fixed inset-0 bg-primary-1 z-50 hidden"
+      class="lg:hidden fixed top-0 right-0 w-1/3 h-full bg-primary-1 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg"
       id="mobileMenu"
     >
-      <div class="flex flex-col items-center justify-center h-full">
+    <!-- Close button -->
+    <button 
+      class="absolute top-4 right-4 p-2 text-white"
+      id="closeMenuButton"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="flex flex-col items-start justify-center h-full pl-6">
+      <div class="flex flex-col space-y-4 w-full">
         {navItems.map(item => (
           <a 
             href={item.path} 
-            class="text-mobile-body1 md:text-body1 text-white hover:text-primary-2 transition-colors py-4"
+            class="text-body3 sm:text-body1 text-white hover:text-primary-2 transition-colors w-full"
           >
             {item.name}
           </a>
         ))}
       </div>
+      
+      <!-- Mobile Language Selector -->
+      <div class="w-full pr-6 mt-4">
+        <div class="relative">
+          <button 
+            class="w-full px-4 py-2 bg-white rounded-md flex items-center justify-between text-body3 text-primary-1"
+            id="mobileLangButton"
+          >
+            <span id="selectedMobileLang">EN</span>
+            <svg 
+              class="w-4 h-4 transition-transform"
+              id="mobileLangArrow"
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+    
+          <!-- Mobile Language Dropdown -->
+          <div 
+            class="hidden absolute w-full mt-1 z-10"
+            id="mobileLangDropdown"
+          >
+            <div class="bg-primary-2 rounded-lg shadow-xl">
+              <button 
+                class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
+                data-mobile-lang="ID"
+              >
+                Bahasa Indonesia
+              </button>
+              <div class="w-full h-[1px] bg-white/20"></div>
+              <button 
+                class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
+                data-mobile-lang="EN"
+              >
+                English
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Backdrop -->
+  <div 
+    class="lg:hidden fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"
+    id="menuBackdrop"
+  ></div>
   <!-- Horizontal separator line -->
   <div class="absolute bottom-0 left-0 w-full h-[1px] bg-primary-1 shadow-md z-30"></div>
 </header>
@@ -209,9 +268,75 @@ const navItems = [
 
   // Mobile menu functionality
   const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const closeMenuButton = document.getElementById('closeMenuButton');
   const mobileMenu = document.getElementById('mobileMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
+  const mobileLangButton = document.getElementById('mobileLangButton');
+  const mobileLangDropdown = document.getElementById('mobileLangDropdown');
+  const mobileLangArrow = document.getElementById('mobileLangArrow');
+  const selectedMobileLang = document.getElementById('selectedMobileLang');
 
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  let isMobileMenuOpen = false;
+  let isMobileLangOpen = false;
+
+  function openMobileMenu() {
+    mobileMenu?.classList.remove('translate-x-full');
+    menuBackdrop?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    isMobileMenuOpen = true;
+  }
+
+  function closeMobileMenu() {
+    mobileMenu?.classList.add('translate-x-full');
+    menuBackdrop?.classList.add('hidden');
+    document.body.style.overflow = '';
+    isMobileMenuOpen = false;
+    closeMobileLangDropdown();
+  }
+
+  function toggleMobileLangDropdown() {
+    isMobileLangOpen = !isMobileLangOpen;
+    mobileLangDropdown?.classList.toggle('hidden', !isMobileLangOpen);
+    mobileLangArrow?.classList.toggle('rotate-180', isMobileLangOpen);
+  }
+
+  function closeMobileLangDropdown() {
+    isMobileLangOpen = false;
+    mobileLangDropdown?.classList.add('hidden');
+    mobileLangArrow?.classList.remove('rotate-180');
+  }
+
+  mobileMenuButton?.addEventListener('click', openMobileMenu);
+  closeMenuButton?.addEventListener('click', closeMobileMenu);
+  menuBackdrop?.addEventListener('click', closeMobileMenu);
+  mobileLangButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileLangDropdown();
+  });
+
+  // Update both mobile and desktop language selectors
+  const mobileLangButtons = document.querySelectorAll('[data-mobile-lang]');
+  mobileLangButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const lang = (e.currentTarget as HTMLButtonElement).dataset.mobileLang;
+      if (selectedLang && selectedMobileLang && lang) {
+        selectedLang.textContent = lang;
+        selectedMobileLang.textContent = lang;
+        closeMobileLangDropdown();
+      }
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', () => {
+    if (isMobileLangOpen) {
+      closeMobileLangDropdown();
+    }
+  });
+
+  // Close menu when clicking menu items
+  const mobileMenuItems = mobileMenu?.querySelectorAll('a');
+  mobileMenuItems?.forEach(item => {
+    item.addEventListener('click', closeMobileMenu);
   });
 </script>

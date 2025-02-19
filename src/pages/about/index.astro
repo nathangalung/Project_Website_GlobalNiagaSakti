@@ -17,34 +17,34 @@ import Layout from '../../layouts/Layout.astro';
               loading="eager"
             />
           </div>
-          <h1 class="text-h3 sm:text-h2 md:text-h1 lg:text-h1 font-bold text-primary-1 text-center lg:text-left">
-            Empowering Industries with<br /> 
-            Precision and Innovation
-          </h1>
         </div>
 
         <!-- Right Column -->
         <div class="flex flex-col gap-4 sm:gap-6">
-          <p class="text-primary-1 text-body4 md:text-body2 text-justify">
+          <p class="text-primary-1 text-body4 md:text-body2 text-justify !text-justify">
             <span class="text-body3 md:text-body1">PT Global Niaga Sakti</span> is your trusted partner in marine supply and industrial solutions. With a strong commitment to quality and reliability, we provide essential products and services to support the maritime industry, offshore operations, and general industrial needs.
           </p>
           
-          <p class="text-primary-1 text-body4 md:text-body2 text-justify">
+          <p class="text-primary-1 text-body4 md:text-body2 text-justify !text-justify">
             Our expertise spans a wide range of marine supplies, from safety equipment and navigation tools to spare parts and provisions. Beyond the maritime sector, we also cater to various industries by delivering high-quality materials, tools, and equipments.  
           </p>
 
-          <p class="text-primary-1 text-body3 md:text-body1 text-justify">
+          <p class="text-primary-1 text-body3 md:text-body1 text-justify !text-justify">
             At Global Niaga Sakti, we prioritize customer satisfaction by ensuring timely deliveries, competitive pricing, and exceptional service. Whether you're in the marine industry or need reliable industrial supplies, we are here to provide the right solutions tailored to your requirements.
           </p>
         </div>
       </div>
 
+      <h1 class="text-h3 sm:text-h2 md:text-h1 text-primary-1 text-center mb-12 lg:mb-16 mt-8 lg:mt-12">
+        Empowering Industries with Precision and Innovation
+      </h1>
+
       <!-- Bottom Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 md:py-4">
         <!-- Left Box -->
         <div class="lg:col-span-5">
           <div class="bg-primary-1 text-white rounded-xl p-5 sm:p-6 lg:p-8 h-full flex items-center justify-center">
-            <p class="text-body4 md:text-body2 text-justify lg:text-justify">
+            <p class="text-body4 md:text-body2 text-justify !text-justify">
               PT Global Niaga Sakti is a company that consistently provides innovative solutions while maintaining a commitment to always prioritize quality, precision, and accuracy in all of its services. Always being a reliable partner that can be counted on by our customers.
             </p>
           </div>
@@ -52,7 +52,7 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- Center Box -->
         <div class="lg:col-span-2 flex items-center justify-center py-2 lg:py-0">
-          <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center">
+          <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center">
             Vision<br />and<br />Mission
           </h3>
         </div>
@@ -60,8 +60,9 @@ import Layout from '../../layouts/Layout.astro';
         <!-- Right Box -->
         <div class="lg:col-span-5">
           <div class="bg-primary-1 text-white rounded-xl p-5 sm:p-6 lg:p-8 h-full flex items-center justify-center">
-            <p class="text-body4 md:text-body2 text-justify lg:text-justify">
+            <p class="text-body4 md:text-body2 text-justify !text-justify">
               PT Global Niaga Sakti provides high-quality products and services that are always relied upon by customers both domestically and internationally. Supporting customer efficiency and productivity by offering comprehensive services aimed at long-term cooperation, while maintaining customer trust and satisfaction.
+            </p>
           </div>
         </div>
       </div>
@@ -77,7 +78,7 @@ import Layout from '../../layouts/Layout.astro';
 
   @media (max-width: 640px) {
     .text-justify {
-      text-align: left;
+      text-align: justify !important;
     }
   }
 </style>

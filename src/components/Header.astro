@@ -8,15 +8,15 @@ const navItems = [
 ];
 ---
 
-<header class="w-full h-[100px] fixed top-0 left-0 right-0 bg-white z-50 overflow-hidden font-inter">
+<header class="w-full h-[60px] sm:h-[80px] md:h-[100px] fixed top-0 left-0 right-0 bg-white z-50 overflow-hidden font-inter">
   <!-- Background containers -->
   <div class="absolute inset-0">
     <!-- White section - full width on mobile -->
-    <div class="absolute top-0 left-0 h-[100px] w-full lg:w-[40%] bg-white">
+    <div class="absolute top-0 left-0 h-[60px] sm:h-[80px] md:h-[100px] w-full lg:w-[40%] bg-white">
       <div class="absolute top-0 right-[-50px] h-[100px] w-[100px] bg-white transform origin-top-right -skew-x-[20deg] hidden lg:block"></div>
     </div>
     <!-- Navy blue section - hidden on mobile -->
-    <div class="absolute top-0 right-0 h-[100px] w-[60%] bg-primary-1 hidden lg:block">
+    <div class="absolute top-0 right-0 h-[60px] sm:h-[80px] md:h-[100px] w-[60%] bg-primary-1 hidden lg:block">
       <div class="absolute top-0 left-[-50px] h-[100px] w-[100px] bg-primary-1 transform origin-top-left skew-x-[20deg]"></div>
     </div>
   </div>
@@ -195,7 +195,7 @@ const navItems = [
   <div class="absolute bottom-0 left-0 w-full h-[1px] bg-primary-1 shadow-md z-30"></div>
 </header>
 
-<div class="h-[100px]"></div>
+<div class="h-[60px] sm:h-[80px] md:h-[100px]"></div>
 
 <script>
   const languageButton = document.getElementById('languageButton');

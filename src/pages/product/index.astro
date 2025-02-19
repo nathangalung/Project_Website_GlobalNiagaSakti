@@ -2,48 +2,51 @@
 import Layout from '../../layouts/Layout.astro';
 
 const products = [
-  {
-    title: 'Cabin Supplies',
-    description: 'Top-notch cabin essentials tailored to provide comfort and convenience for marine crews.',
-    image: '/images/product/Cabin.png'
-  },
-  {
-    title: 'Deck Supplies',
-    description: 'A complete range of deck equipment and maintenance tools to ensure peak vessel performance.',
-    image: '/images/product/Deck.png'
-  },
-  {
-    title: 'Electric Supplies',
-    description: 'Cutting-edge electrical components and systems designed for marine applications.',
-    image: '/images/product/Electric.png'
-  },
-  {
-    title: 'Sealing Element',
-    description: 'Premium sealing tools and components designed for marine applications.',
-    image: '/images/product/Sealing.png'
+{
+    title: 'Engine Supplies',
+    image: '/images/product/Engine.png'
   },
   {
     title: 'Safety Equipment',
-    description: 'High-quality safety gear designed to ensure the well-being of crews in marine and offshore operations.',
     image: '/images/product/Safety.png'
   },
   {
-    title: 'Engine Supplies',
-    description: 'A wide range of engine components and accessories designed for marine use.',
-    image: '/images/product/Engine.png'
+    title: 'Electric Supplies',
+    image: '/images/product/Electric.png'
+  },
+  {
+    title: 'Deck Supplies',
+    image: '/images/product/Deck.png'
+  },
+  {
+    title: 'Cabin Supplies',
+    image: '/images/product/Cabin.png'
+  },
+  {
+    title: 'Medical Store Supplies',
+    image: '/images/product/Medical.png'
+  },
+  {
+    title: 'Safety Lubricants and Calibration',
+    image: '/images/product/Lubricants.png'
+  },
+  {
+    title: 'Sealing Element',
+    image: '/images/product/Sealing.png'
   }
+  
 ];
 ---
 
 <Layout title="Our Products - PT Global Niaga Sakti" description="Explore our range of high-quality marine products">
   <div class="min-h-[calc(100vh-396px)] bg-white py-12">
-    <div class="max-w mx-auto px-[5%]">
-      <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-12">
+    <div class="max-w mx-auto px-[10%] space-y-16">
+      <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center">
         Explore our range of high-quality products designed to meet the needs of diverse industries.
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1280px] mx-auto">
-        {products.map(product => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1280px] mx-auto">
+        {products.slice(0, 6).map(product => (
           <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow">
             <div class="p-6 flex items-center justify-center h-[180px] bg-primary-2/20">
               <img 
@@ -54,16 +57,38 @@ const products = [
               />
             </div>
             <div class="bg-primary-1 text-white p-6 flex-1 flex flex-col items-center">
-              <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold mb-3 text-center">
+              <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold mb-1 text-center">
                 {product.title}
               </h4>
-              <p class="text-body4 md:text-body2 text-center">
-                {product.description}
-              </p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Center last two products */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[850px] mx-auto">
+        {products.slice(6).map(product => (
+          <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow">
+            <div class="p-6 flex items-center justify-center h-[180px] bg-primary-2/20">
+              <img 
+                src={product.image} 
+                alt={product.title}
+                class="max-w-[90%] max-h-[90%] object-contain transform scale-150"
+                loading="lazy"
+              />
+            </div>
+            <div class="bg-primary-1 text-white p-6 flex-1 flex flex-col items-center">
+              <h4 class="text-body1 sm:text-h5 md:text-h4 font-bold mb-1 text-center">
+                {product.title}
+              </h4>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center">
+        and as per client request
+      </h3>
     </div>
   </div>
 </Layout>

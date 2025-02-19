@@ -15,16 +15,16 @@ export default {
         },
         fontSize: {
           // Desktop
-          'h1': ['36px', { lineHeight: '48px', fontWeight: '700' }],
-          'h2': ['32px', { lineHeight: '40px', fontWeight: '700' }],
-          'h3': ['28px', { lineHeight: '40px', fontWeight: '700' }],
-          'h4': ['24px', { lineHeight: '32px', fontWeight: '700' }],
-          'h5': ['20px', { lineHeight: '32px', fontWeight: '700' }],
+          'h1': ['34px', { lineHeight: '44px', fontWeight: '700' }],
+          'h2': ['30px', { lineHeight: '36px', fontWeight: '700' }],
+          'h3': ['26px', { lineHeight: '36px', fontWeight: '700' }],
+          'h4': ['22px', { lineHeight: '28px', fontWeight: '700' }],
+          'h5': ['18px', { lineHeight: '28px', fontWeight: '700' }],
 
-          'body1': ['20px', { lineHeight: '28px', fontWeight: '700' }],
-          'body2': ['20px', { lineHeight: '28px', fontWeight: '400' }],
-          'body3': ['16px', { lineHeight: '24px', fontWeight: '700' }],
-          'body4': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+          'body1': ['18px', { lineHeight: '24px', fontWeight: '700' }],
+          'body2': ['18px', { lineHeight: '24px', fontWeight: '400' }],
+          'body3': ['14px', { lineHeight: '20px', fontWeight: '700' }],
+          'body4': ['14px', { lineHeight: '20px', fontWeight: '400' }],
           
           // Mobile (70% of desktop size)
           'mobile-h1': ['25px', { lineHeight: '32px', fontWeight: '700' }],

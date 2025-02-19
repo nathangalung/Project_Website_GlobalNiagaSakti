@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Overlay Content -->
       <div class="absolute inset-0">
-        <div class="max-w mx-auto px-[5%] h-full">
+        <div class="max-w mx-auto px-[10%] h-full">
           <div class="grid grid-cols-1 lg:grid-cols-2 h-full items-center">
             <div class="flex flex-col justify-center text-white">
               <div class="max-w-[600px]">
@@ -44,63 +44,62 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Content Below -->
-    <div class="py-16 md:py-20">
-      <div class="max-w mx-auto px-[5%]">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          <!-- Left Column -->
-          <div class="flex flex-col justify-center h-full gap-12">
-            <h2 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-justify">
-              With PT Global Niaga Sakti, you don't just get a supplier, you gain a dedicated partner in driving your success forward.
-            </h2>
-            <div class="w-full max-w-[50%] mx-auto flex items-center">
-              <img 
-                src="/images/home/MESPAS.png"
-                alt="MESPAS"
-                class="w-full object-contain rounded-lg"
-                loading="lazy"
-              />
+    <!-- Content Section -->
+    <section class="py-4 md:py-5">
+      <div class="max-w mx-auto px-[10%] space-y-12">
+        <h2 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center max-w-4xl mx-auto">
+          With PT Global Niaga Sakti, you don't just get a supplier, you gain a dedicated partner in driving your success forward.
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-40">
+          <!-- Products Box -->
+          <div class="bg-gray-50 p-8 lg:p-12 rounded-xl border-2 border-primary-3 flex flex-col h-full">
+            <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-4">
+              Our Products
+            </h3>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+              We offer comprehensive industrial solutions tailored to meet your specific needs. From product supplies to engineering services, our team ensures excellence in every aspect of our service delivery. With a focus on innovation and quality, we deliver reliable solutions that optimize your operations.
+            </p>
+            <div class="text-center mt-auto">
+              <a href="/product" class="inline-flex items-center text-primary-1 group">
+                <span class="text-body1 group-hover:underline">See More</span>
+                <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </a>
             </div>
           </div>
 
-          <!-- Right Column -->
-          <div class="flex flex-col gap-8">
-            <!-- Services Box -->
-            <div class="bg-gray-50 p-8 lg:p-10 rounded-xl border-2 border-primary-3">
-              <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-4">
-                Our Products
-              </h3>
-              <p class="text-body2 leading-relaxed text-primary-1 text-justify mb-6">
-                We offer comprehensive industrial solutions tailored to meet your specific needs. From engineering services to product supplies, our team ensures excellence in every aspect of our service delivery.
-              </p>
-              <div class="text-center">
-                <a href="/product" class="inline-flex items-center text-primary-1 group">
-                  <span class="text-body1 group-hover:underline">See More</span>
-                  <span class="ml-2">→</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Customers Box -->
-            <div class="bg-gray-50 p-8 lg:p-10 rounded-xl border-2 border-primary-3">
-              <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-4">
-                Our Customers
-              </h3>
-              <p class="text-body2 leading-relaxed text-primary-1 text-justify mb-6">
-                We take pride in serving industry leaders across various sectors. Our commitment to excellence has earned us the trust of numerous prestigious organizations who rely on our solutions.
-              </p>
-              <div class="text-center">
-                <a href="/customer" class="inline-flex items-center text-primary-1 group">
-                  <span class="text-body1 group-hover:underline">See More</span>
-                  <span class="ml-2">→</span>
-                </a>
-              </div>
+          <!-- Customers Box -->
+          <div class="bg-gray-50 p-8 lg:p-12 rounded-xl border-2 border-primary-3 flex flex-col h-full">
+            <h3 class="text-h5 sm:text-h4 md:text-h3 font-bold text-primary-1 text-center mb-4">
+              Our Customers
+            </h3>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+              We take pride in partnering with a wide variety of customers spanning industries such as bulk carriers, multi-purpose vessels, marine logistics, coal production, maritime transport, coal trading, and leading manufacturers.
+            </p>
+            <div class="text-center mt-auto">
+              <a href="/customer" class="inline-flex items-center text-primary-1 group">
+                <span class="text-body1 group-hover:underline">See More</span>
+                <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <!-- MESPAS Logo Section -->
+    <section class="py-12">
+      <div class="container mx-auto">
+        <div class="w-full max-w-[20%] mx-auto">
+          <img 
+            src="/images/home/MESPAS.png"
+            alt="MESPAS"
+            class="w-full object-contain rounded-lg"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
 
 <style>

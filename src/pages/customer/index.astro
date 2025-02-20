@@ -28,40 +28,40 @@ const customers = [
 
       <!-- Customer Logos Grid -->
       <div class="flex flex-col gap-4 max-w-[1280px] mx-auto">
-        <!-- First Row - 2 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:px-[200px]">
+        <!-- First Row - 2 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:max-w-[67%] mx-auto">
           {customers[0].map(customer => (
-            <div class="bg-white border border-primary-1 rounded-lg p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[120px] w-full">
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
               <img 
                 src={customer.logo} 
                 alt={customer.name}
-                class="w-auto max-h-[75px] object-contain"
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
               />
             </div>
           ))}
         </div>
 
-        <!-- Second Row - 3 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Second Row - 3 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
           {customers[1].map(customer => (
-            <div class="bg-white border border-primary-1 rounded-lg p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[120px] w-full">
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
               <img 
                 src={customer.logo} 
                 alt={customer.name}
-                class="w-auto max-h-[75px] object-contain"
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
               />
             </div>
           ))}
         </div>
 
-        <!-- Third Row - 2 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:px-[200px]">
+        <!-- Third Row - 2 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:max-w-[67%] mx-auto">
           {customers[2].map(customer => (
-            <div class="bg-white border border-primary-1 rounded-lg p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[120px] w-full">
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
               <img 
                 src={customer.logo} 
                 alt={customer.name}
-                class="w-auto max-h-[75px] object-contain"
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
               />
             </div>
           ))}

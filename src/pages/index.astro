@@ -6,7 +6,7 @@ const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
 const t = translations[currentLang as keyof typeof translations];
 ---
 
-<Layout title="PT Global Niaga Sakti - Industrial Solutions Partner" description="Your trusted partner for industrial solutions">
+<Layout title={t.meta.title.home} description={t.meta.description.home}>
   <div class="min-h-[calc(100vh-396px)] bg-white">
     <!-- Hero Section with Full-width Image -->
     <div class="relative">

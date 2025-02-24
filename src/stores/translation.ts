@@ -425,7 +425,7 @@ export const translations = {
                         link: "Privacy Policy Generator"
                     },
                     cookies: {
-                        title: "Cookies and Web Beacons",
+                        title: "Cookies dan Web Beacons",
                         text1: "Seperti halnya situs web lainnya, PT. Global Niaga Sakti menggunakan 'cookies'. Cookies ini digunakan untuk menyimpan informasi, termasuk preferensi pengunjung dan halaman pada situs web yang diakses atau dikunjungi oleh pengunjung. Informasi ini digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan/atau informasi lainnya.",
                         text2: "Untuk informasi lebih umum tentang cookies, silakan baca",
                         link: "artikel \"Cookies\" dari Privacy Policy Generator"

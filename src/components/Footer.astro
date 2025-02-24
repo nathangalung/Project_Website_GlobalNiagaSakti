@@ -30,36 +30,44 @@ const legalLinks = [
 
 <footer class="w-full bg-primary-1 text-white font-inter">
   <div class="max-w mx-auto px-[5%] py-[2%]">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8"> <!-- Reduced gap-12 to gap-6 for mobile -->
       <!-- Company Info -->
       <div class="md:col-span-5 md:pl-0">
-        <div class="flex items-center gap-2 mb-4">
+        <div class="flex items-center gap-2 mb-2 md:mb-4">
           <img src="/images/logo/White.png" alt="Logo" class="h-10 w-10" />
           <h3 class="text-body1 md:text-h5">PT GLOBAL NIAGA SAKTI</h3>
         </div>
         
-        <address class="text-body4 md:text-body4 leading-relaxed not-italic mb-6">
+        <address class="text-body4 md:text-body4 leading-relaxed not-italic mb-4 md:mb-6">
           Gedung Wirausaha Lantai 1, Unit 104<br />
           Jl. HR. Rasuna Said Kav. C5<br />
           Kuningan, Setiabudi<br />
           Jakarta Selatan 12920
         </address>
-
-        <p class="text-body4 text-white/90 mt-auto md:mt-8">
+      
+        <p class="hidden md:block text-body4 text-white/90 mt-auto md:mt-4">
           {contactInfo.copyright}
         </p>
       </div>
-
-      <!-- Navigation -->
-      <div class="md:col-span-3 flex flex-col gap-2">
-        {navItems.map(item => (
-          <a 
-            href={item.path} 
-            class="text-body3 md:text-body1 hover:text-primary-2 transition-colors"
-          >
-            {item.name}
-          </a>
-        ))}
+      
+      <!-- Navigation - Updated for mobile grid -->
+      <div class="md:col-span-3 mb-4 md:mb-0">
+        <div class="grid grid-cols-3 md:flex md:flex-col gap-2">
+          {navItems.map((item, index) => (
+            <a 
+              href={item.path} 
+              class={`text-body3 md:text-body1 hover:text-primary-2 transition-colors ${
+                // Center the last item if total items is odd
+                index === navItems.length - 1 && navItems.length % 2 !== 0 
+                  ? 'col-start-2' 
+                  : ''
+              }`}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
       </div>
 
       <!-- Contact Info -->
@@ -86,34 +94,31 @@ const legalLinks = [
           </div>
         </div>
 
-        <!-- Legal Links -->
-        <div class="flex flex-wrap gap-x-3 gap-y-2 text-body4 mt-auto md:mt-8">
-          {legalLinks.map((link, index) => (
-            <>
-              <a 
-                href={link.path} 
-                class="underline hover:text-primary-2 transition-colors"
-              >
-                {link.name}
-              </a>
-              {index < legalLinks.length - 1 && (
-                <span class="text-white/50">|</span>
-              )}
-            </>
-          ))}
+         <!-- Legal Links - Updated for mobile centering -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-x-3 gap-y-1 text-body4 mt-auto md:mt-4">
+          <div class="w-full md:w-auto grid grid-cols-3 md:flex md:flex-row gap-3 justify-center items-center">
+            {legalLinks.map((link, index) => (
+              <>
+                <a 
+                  href={link.path} 
+                  class="text-center md:text-left underline hover:text-primary-2 transition-colors"
+                >
+                  {link.name}
+                </a>
+                {index < legalLinks.length - 1 && (
+                  <span class="hidden md:inline text-white/50">|</span>
+                )}
+              </>
+            ))}
+          </div>
         </div>
       </div>
+
+    <!-- Mobile Copyright - Shown at bottom -->
+    <div class="md:hidden text-center mt-0 pt-2 border-white/20">
+      <p class="text-body4 text-white/90">
+        {contactInfo.copyright}
+      </p>
     </div>
   </div>
 </footer>
-
-<script>
-  import { getLanguage } from '../stores/language';
-
-  // Listen for custom language change event
-  window.addEventListener('languageChanged', () => {
-    const currentLang = getLanguage();
-    // Reload page to reflect language change
-    location.reload();
-  });
-</script>

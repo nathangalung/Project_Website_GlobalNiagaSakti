@@ -9,6 +9,7 @@ export default defineConfig({
       enabled: true,
     },
     imageService: true,
+    functionPerRoute: false,
     devMode: false,
     imagesConfig: {
       sizes: [640, 750, 828, 1080, 1200, 1920],

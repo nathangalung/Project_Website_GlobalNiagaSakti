@@ -17,7 +17,7 @@ const t = translations[currentLang as keyof typeof translations];
       <!-- Contact Form and Info Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         <!-- Contact Form -->
-        <div class="flex flex-col gap-6 h-fit">
+        <form id="contactForm" class="flex flex-col gap-6 h-fit">
           <!-- Full Name -->
           <div class="flex flex-col gap-2">
             <h4 class="text-body1 sm:text-h5 md:text-h4 text-primary-1">
@@ -26,6 +26,8 @@ const t = translations[currentLang as keyof typeof translations];
             <input 
               type="text" 
               id="fullName"
+              name="fullName"
+              required
               placeholder={t.contact.form.fullName.placeholder}
               class="w-full px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 placeholder:text-primary-2 text-primary-1 text-body4"
             />
@@ -39,6 +41,8 @@ const t = translations[currentLang as keyof typeof translations];
             <input 
               type="email" 
               id="email"
+              name="email"
+              required
               placeholder={t.contact.form.email.placeholder}
               class="w-full px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 placeholder:text-primary-2 text-primary-1 text-body4"
             />
@@ -51,6 +55,8 @@ const t = translations[currentLang as keyof typeof translations];
             </h4>
             <textarea 
               id="message"
+              name="message"
+              required
               rows="6"
               placeholder={t.contact.form.message.placeholder}
               class="w-full h-[144px] px-4 py-3 rounded-lg border border-primary-1 focus:outline-none focus:ring-2 focus:ring-primary-1/20 resize-none text-body4 placeholder:text-primary-2 text-primary-1"
@@ -66,7 +72,7 @@ const t = translations[currentLang as keyof typeof translations];
               {t.contact.form.submit}
             </button>
           </div>
-        </div>
+        </form>
 
         <!-- Contact Information -->
         <div class="bg-primary-2/10 rounded-lg p-8 md:p-10 h-fit border border-primary-1">
@@ -115,3 +121,19 @@ const t = translations[currentLang as keyof typeof translations];
     </div>
   </div>
 </Layout>
+
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const fullName = (document.getElementById('fullName') as HTMLInputElement).value;
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+    
+    // Format the WhatsApp message
+    const whatsappMessage = `Name: ${fullName}%0A%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+    
+    // Redirect to WhatsApp with pre-filled message
+    window.location.href = `https://wa.me/628119990991?text=${whatsappMessage}`;
+  });
+</script>

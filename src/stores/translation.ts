@@ -370,7 +370,7 @@ export const translations = {
             }
         },
         products: {
-            title: "Jelajahi rangkaian produk berkualitas tinggi kami yang dirancang untuk memenuhi kebutuhan berbagai industri.",
+            title: "Jelajahi produk berkualitas tinggi kami yang dirancang untuk memenuhi kebutuhan berbagai industri.",
             types: {
                 engine: "Perlengkapan Mesin",
                 safety: "Peralatan Keselamatan",
@@ -388,7 +388,7 @@ export const translations = {
             footer: "dan masih banyak perusahaan lainnya"
         },
         contact: {
-            title: "Tim kami siap membantu dengan dukungan dan solusi ahli.",
+            title: "Tim kami siap membantu dengan dukungan dan solusi yang profesional.",
             form: {
                 fullName: {
                     label: "Nama Lengkap",

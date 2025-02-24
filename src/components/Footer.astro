@@ -35,17 +35,17 @@ const legalLinks = [
       <div class="md:col-span-5 md:pl-0">
         <div class="flex items-center gap-2 mb-4">
           <img src="/images/logo/White.png" alt="Logo" class="h-10 w-10" />
-          <h3 class="text-body3 sm:text-body1 md:text-h5">PT GLOBAL NIAGA SAKTI</h3>
+          <h3 class="text-body1 md:text-h5">PT GLOBAL NIAGA SAKTI</h3>
         </div>
         
-        <address class="text-body6 md:text-body4 sm:text-body2 leading-relaxed not-italic mb-6">
+        <address class="text-body4 md:text-body4 leading-relaxed not-italic mb-6">
           Gedung Wirausaha Lantai 1, Unit 104<br />
           Jl. HR. Rasuna Said Kav. C5<br />
           Kuningan, Setiabudi<br />
           Jakarta Selatan 12920
         </address>
 
-        <p class="text-body6 sm:text-body4 text-white/90 mt-auto md:mt-8">
+        <p class="text-body4 text-white/90 mt-auto md:mt-8">
           {contactInfo.copyright}
         </p>
       </div>
@@ -55,7 +55,7 @@ const legalLinks = [
         {navItems.map(item => (
           <a 
             href={item.path} 
-            class="text-body5 sm:text-body3 md:text-body1 hover:text-primary-2 transition-colors"
+            class="text-body3 md:text-body1 hover:text-primary-2 transition-colors"
           >
             {item.name}
           </a>
@@ -64,11 +64,11 @@ const legalLinks = [
 
       <!-- Contact Info -->
       <div class="md:col-span-4 flex flex-col">
-        <h4 class="text-body3 sm:text-body1 md:text-h5 underline mb-4">
+        <h4 class="text-body1 md:text-h5 underline mb-4">
           {t.footer.contact.title}
         </h4>
         
-        <div class="flex flex-col gap-3 text-body5 sm:text-body3 mb-4">
+        <div class="flex flex-col gap-3 text-body3 mb-4">
           <div class="flex items-start gap-3">
             <svg class="w-6 h-6 mt-1 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
@@ -87,7 +87,7 @@ const legalLinks = [
         </div>
 
         <!-- Legal Links -->
-        <div class="flex flex-wrap gap-x-3 gap-y-2 text-body6 sm:text-body4 mt-auto md:mt-8">
+        <div class="flex flex-wrap gap-x-3 gap-y-2 text-body4 mt-auto md:mt-8">
           {legalLinks.map((link, index) => (
             <>
               <a 

@@ -3,13 +3,23 @@ import { translations } from '../stores/translation';
 const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
 const t = translations[currentLang as keyof typeof translations];
 
-const navItems = [
-  { path: '/', name: t.nav.home, position: '46%' },
-  { path: '/about', name: t.nav.about, position: '53%' },
-  { path: '/product', name: t.nav.products, position: '62%' },
-  { path: '/customer', name: t.nav.customers, position: '71%' },
-  { path: '/contact', name: t.nav.contact, position: '81%' },
-];
+const getNavPositions = (lang: 'en' | 'id') => {
+  const baseOffset = 45; // Starting position
+  const gaps = {
+    en: [0, 7, 9, 9, 10], // Gaps between English items
+    id: [0, 9, 12, 8, 7]  // Gaps between Indonesian items
+  };
+
+  return [
+    { path: '/', name: t.nav.home, position: `${baseOffset}%` },
+    { path: '/about', name: t.nav.about, position: `${baseOffset + gaps[lang][1]}%` },
+    { path: '/product', name: t.nav.products, position: `${baseOffset + gaps[lang][1] + gaps[lang][2]}%` },
+    { path: '/customer', name: t.nav.customers, position: `${baseOffset + gaps[lang][1] + gaps[lang][2] + gaps[lang][3]}%` },
+    { path: '/contact', name: t.nav.contact, position: `${baseOffset + gaps[lang][1] + gaps[lang][2] + gaps[lang][3] + gaps[lang][4]}%` }
+  ];
+};
+
+const navItems = getNavPositions(currentLang as 'en' | 'id');
 
 const languageNames = {
   id: "Bahasa Indonesia",
@@ -21,11 +31,11 @@ const languageNames = {
   <!-- Background containers -->
   <div class="absolute inset-0">
     <!-- White section - full width on mobile -->
-    <div class="absolute top-0 left-0 h-[60px] sm:h-[80px] md:h-[100px] w-full lg:w-[40%] bg-white">
+    <div class="absolute top-0 left-0 h-[60px] sm:h-[80px] md:h-[100px] w-full lg:w-[39%] bg-white">
       <div class="absolute top-0 right-[-50px] h-[100px] w-[100px] bg-white transform origin-top-right -skew-x-[20deg] hidden lg:block"></div>
     </div>
     <!-- Navy blue section - hidden on mobile -->
-    <div class="absolute top-0 right-0 h-[60px] sm:h-[80px] md:h-[100px] w-[60%] bg-primary-1 hidden lg:block">
+    <div class="absolute top-0 right-0 h-[60px] sm:h-[80px] md:h-[100px] w-[61%] bg-primary-1 hidden lg:block">
       <div class="absolute top-0 left-[-50px] h-[100px] w-[100px] bg-primary-1 transform origin-top-left skew-x-[20deg]"></div>
     </div>
   </div>

@@ -39,7 +39,7 @@ const products = [
                 />
               </div>
               <div class="bg-primary-1 text-white p-2 sm:p-3 md:p-4 flex-1 flex flex-col items-center justify-center">
-                <h4 class="text-h5 sm:text-h4 md:text-h3 text-center">
+                <h4 class="text-body1 sm:text-h5 md:text-h4 text-center">
                   {product.title}
                 </h4>
               </div>
@@ -51,31 +51,33 @@ const products = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {/* Empty column for large screens */}
           <div class="hidden lg:block"></div>
-          
-          {/* Two centered products */}
-          <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 w-full lg:w-2/3 mx-auto">
-            {products.slice(6, 8).map(product => (
-              <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow h-[200px] sm:h-[250px] md:h-[275px]">
-                <div class="p-4 sm:p-6 flex items-center justify-center h-[140px] sm:h-[180px] bg-primary-2/20">
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    class="max-w-[80%] sm:max-w-[90%] max-h-[80%] sm:max-h-[90%] object-contain transform scale-125 sm:scale-150"
-                    loading="lazy"
-                  />
+
+          {/* Center column with 2 products */}
+          <div class="col-span-full md:col-span-2 lg:col-span-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:-mx-[53%]">
+              {products.slice(6, 8).map(product => (
+                <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow h-[200px] sm:h-[250px] md:h-[275px]">
+                  <div class="p-4 sm:p-6 flex items-center justify-center h-[140px] sm:h-[180px] bg-primary-2/20">
+                    <img 
+                      src={product.image} 
+                      alt={product.title}
+                      class="max-w-[80%] sm:max-w-[90%] max-h-[80%] sm:max-h-[90%] object-contain transform scale-125 sm:scale-150"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="bg-primary-1 text-white p-2 sm:p-3 md:p-4 flex-1 flex flex-col items-center justify-center">
+                    <h4 class="text-body1 sm:text-h5 md:text-h4 text-center">
+                      {product.title}
+                    </h4>
+                  </div>
                 </div>
-                <div class="bg-primary-1 text-white p-2 sm:p-3 md:p-4 flex-1 flex flex-col items-center justify-center">
-                  <h4 class="text-h5 sm:text-h4 md:text-h3 text-center">
-                    {product.title}
-                  </h4>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-        {/* Empty column for large screens */}
-        <div class="hidden lg:block"></div>
-      </div>
+          {/* Empty column for large screens */}
+          <div class="hidden lg:block"></div>
+        </div>
 
         <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center md:mt-4">
           {t.products.footer}

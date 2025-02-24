@@ -3,5 +3,5 @@
     "framework": "astro",
     "devCommand": "bun run dev",
     "installCommand": "bun install",
-    "outputDirectory": "dist"
+    "regions": ["sin1"]
   }

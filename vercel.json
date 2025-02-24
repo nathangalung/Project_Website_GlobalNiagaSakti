@@ -1,7 +1,7 @@
 {
-    "buildCommand": "bun run build",
+    "buildCommand": "npm run build",
     "framework": "astro",
-    "devCommand": "bun run dev",
-    "installCommand": "bun install",
+    "devCommand": "npm run dev",
+    "installCommand": "npm install",
     "regions": ["sin1"]
-  }
+}

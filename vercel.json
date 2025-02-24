@@ -1,12 +1,7 @@
 {
-    "buildCommand": "npm run build",
-    "devCommand": "npm run dev",
-    "installCommand": "npm install",
+    "buildCommand": "bun run build",
     "framework": "astro",
-    "functions": {
-      "api/**/*.js": {
-        "memory": 1024,
-        "maxDuration": 10
-      }
-    }
+    "devCommand": "bun run dev",
+    "installCommand": "bun install",
+    "outputDirectory": "dist"
   }

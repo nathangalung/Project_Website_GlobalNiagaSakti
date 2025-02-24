@@ -8,11 +8,13 @@ export const onRequest = defineMiddleware(async ({ cookies, request }, next) => 
       cookies.set("selectedLang", lang, {
         path: "/",
         maxAge: 60 * 60 * 24 * 365,
-        sameSite: "lax"
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === 'production'
       });
     }
     
-    return await next();
+    const response = await next();
+    return response;
   } catch (error) {
     console.error('Middleware error:', error);
     return next();

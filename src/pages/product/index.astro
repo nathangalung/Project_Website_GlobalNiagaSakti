@@ -1,49 +1,28 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
 
 const products = [
-{
-    title: 'Engine Supplies',
-    image: '/images/product/Engine.png'
-  },
-  {
-    title: 'Safety Equipment',
-    image: '/images/product/Safety.png'
-  },
-  {
-    title: 'Electric Supplies',
-    image: '/images/product/Electric.png'
-  },
-  {
-    title: 'Deck Supplies',
-    image: '/images/product/Deck.png'
-  },
-  {
-    title: 'Cabin Supplies',
-    image: '/images/product/Cabin.png'
-  },
-  {
-    title: 'Medical Store Supplies',
-    image: '/images/product/Medical.png'
-  },
-  {
-    title: 'Safety Lubricants and Calibration',
-    image: '/images/product/Lubricants.png'
-  },
-  {
-    title: 'Sealing Element',
-    image: '/images/product/Sealing.png'
-  }
-  
+  { title: t.products.types.engine, image: '/images/product/Engine.png' },
+  { title: t.products.types.safety, image: '/images/product/Safety.png' },
+  { title: t.products.types.electric, image: '/images/product/Electric.png' },
+  { title: t.products.types.deck, image: '/images/product/Deck.png' },
+  { title: t.products.types.cabin, image: '/images/product/Cabin.png' },
+  { title: t.products.types.medical, image: '/images/product/Medical.png' },
+  { title: t.products.types.lubricants, image: '/images/product/Lubricants.png' },
+  { title: t.products.types.sealing, image: '/images/product/Sealing.png' }
 ];
 ---
 
-<Layout title="Our Products - PT Global Niaga Sakti" description="Explore our range of high-quality marine products">
+<Layout title={t.meta.title.products} description={t.meta.description.products}>
   <div class="min-h-[calc(100vh-396px)] bg-white py-6 sm:py-8 md:py-12">
     <div class="max-w mx-auto px-[10%] space-y-8">
       <!-- Heading -->
       <h1 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mb-2 sm:mb-8 md:mb-12">
-        Explore our range of high-quality products designed to meet the needs of diverse industries.
+        {t.products.title}
       </h1>
 
       <div class="flex flex-col gap-8">
@@ -99,7 +78,7 @@ const products = [
       </div>
 
         <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center md:mt-4">
-          and as per client request
+          {t.products.footer}
         </h3>
       </div>
     </div>

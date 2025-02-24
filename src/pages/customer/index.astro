@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
 
 const customers = [
   [
@@ -18,12 +22,12 @@ const customers = [
 ];
 ---
 
-<Layout title="Our Customers - PT Global Niaga Sakti" description="Trusted partners of PT Global Niaga Sakti">
+<Layout title={t.meta.title.customers} description={t.meta.description.customers}>
   <div class="min-h-[calc(100vh-396px)] bg-white py-6 sm:py-8 md:py-12">
     <div class="max-w mx-auto px-[10%] space-y-8">
       <!-- Heading -->
       <h1 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mx-auto">
-        Trusted by industry leaders across marine logistics, manufacturing, and beyond, our customers are at the heart of everything we do.
+        {t.customers.title}
       </h1>
 
       <!-- Customer Logos Grid -->
@@ -68,7 +72,7 @@ const customers = [
         </div>
       </div>
       <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center"></>
-        and many more companies
+        {t.customers.footer}
       </h3>
     </div>
   </div>

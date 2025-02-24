@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translations } from '../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
 ---
 
 <Layout title="PT Global Niaga Sakti - Industrial Solutions Partner" description="Your trusted partner for industrial solutions">
@@ -24,9 +28,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="flex flex-col justify-center text-white">
               <div class="max-w-[600px]">
                 <h2 class="text-h4 sm:text-h3 md:text-h2 leading-tight mb-4 sm:mb-8 whitespace-normal">
-                  Your trusted partner for industrial solutions,
-                  delivering precision, speed, and excellence,
-                  to meet your needs.
+                  {t.home.hero.title}
                 </h2>
                 <a 
                   href="/contact" 
@@ -35,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
                         shadow-lg hover:shadow-xl transform hover:-translate-y-0.5
                         transition-transform duration-200"
                 >
-                  Contact Us
+                  {t.home.hero.cta}
                 </a>
               </div>
             </div>
@@ -48,20 +50,20 @@ import Layout from '../layouts/Layout.astro';
     <section class="py-8 md:py-12">
       <div class="max-w mx-auto px-[10%] space-y-12">
         <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center max-w-4xl mx-auto">
-          With PT Global Niaga Sakti, you don't just get a supplier, you gain a dedicated partner in driving your success forward.
+          {t.home.content.tagline}
         </h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-40">
           <!-- Products Box -->
           <div class="bg-gray-50 p-8 lg:p-12 rounded-xl border-2 border-primary-3 flex flex-col h-full">
             <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mb-4">
-              Our Products
+              {t.home.content.products.title}
             </h3>
             <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
-              We offer comprehensive industrial solutions tailored to meet your specific needs. From product supplies to engineering services, our team ensures excellence in every aspect of our service delivery. With a focus on innovation and quality, we deliver reliable solutions that optimize your operations.
+              {t.home.content.products.description}
             </p>
             <div class="text-center mt-auto">
               <a href="/product" class="inline-flex items-center text-primary-1 group">
-                <span class="text-body3 md:text-body1 group-hover:underline">See More</span>
+                <span class="text-body3 md:text-body1 group-hover:underline">{t.home.content.products.cta}</span>
                 <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </a>
             </div>
@@ -70,14 +72,14 @@ import Layout from '../layouts/Layout.astro';
           <!-- Customers Box -->
           <div class="bg-gray-50 p-8 lg:p-12 rounded-xl border-2 border-primary-3 flex flex-col h-full">
             <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mb-4">
-              Our Customers
+              {t.home.content.customers.title}
             </h3>
             <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
-              We take pride in partnering with a wide variety of customers spanning industries such as bulk carriers, multi-purpose vessels, marine logistics, coal production, maritime transport, coal trading, and leading manufacturers.
+              {t.home.content.customers.description}
             </p>
             <div class="text-center mt-auto">
               <a href="/customer" class="inline-flex items-center text-primary-1 group">
-                <span class="text-body3 md:text-body1 group-hover:underline">See More</span>
+                <span class="text-body3 md:text-body1 group-hover:underline">{t.home.content.customers.cta}</span>
                 <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </a>
             </div>
@@ -89,7 +91,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- MESPAS Logo Section -->
     <section class="pt-2 pb-12">
       <div class="container mx-auto">
-        <div class="w-full max-w-[50%] md:max-w-[20%] mx-auto">
+        <div class="w-full max-w-[60%] sm:max-w-[30%] md:max-w-[15%] mx-auto">
           <img 
             src="/images/home/MESPAS.png"
             alt="MESPAS"

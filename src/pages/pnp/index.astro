@@ -1,8 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
 ---
 
-<Layout title="Privacy Policy - PT Global Niaga Sakti" description="Privacy Policy of PT Global Niaga Sakti">
+<Layout title={t.meta.title.privacy} description={t.meta.description.privacy}>
   <main class="w-full bg-white">
     <div class="max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-12">
       <h1 class="text-h4 sm:text-h3 md:text-h2 text-primary-1 mb-6">

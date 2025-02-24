@@ -1,11 +1,20 @@
 ---
+import { translations } from '../stores/translation';
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
+
 const navItems = [
-  { path: '/', name: 'Home', position: '46%' },
-  { path: '/about', name: 'About Us', position: '53%' },
-  { path: '/product', name: 'Products', position: '62%' },
-  { path: '/customer', name: 'Customers', position: '71%' },
-  { path: '/contact', name: 'Contact', position: '81%' },
+  { path: '/', name: t.nav.home, position: '46%' },
+  { path: '/about', name: t.nav.about, position: '53%' },
+  { path: '/product', name: t.nav.products, position: '62%' },
+  { path: '/customer', name: t.nav.customers, position: '71%' },
+  { path: '/contact', name: t.nav.contact, position: '81%' },
 ];
+
+const languageNames = {
+  id: "Bahasa Indonesia",
+  en: "English"
+};
 ---
 
 <header class="w-full h-[60px] sm:h-[80px] md:h-[100px] fixed top-0 left-0 right-0 bg-white z-50 overflow-hidden font-inter">
@@ -30,7 +39,7 @@ const navItems = [
         alt="Company Logo" 
         class="h-10 md:h-20 w-auto"
       />
-      <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 whitespace-nowrap">
+      <h3 class="text-body1 sm:text-h5 md:text-h4 text-primary-1 whitespace-nowrap">
         PT GLOBAL NIAGA SAKTI
       </h3>
     </div>
@@ -54,14 +63,14 @@ const navItems = [
         id="languageSelector"
       >
         <button 
-          class="h-[40px] w-[90px] px-5 bg-white rounded-md flex items-center justify-between text-body3 md:text-h5 text-primary-1 relative"
+          class="h-[40px] w-[75px] px-5 bg-white rounded-md flex items-center justify-between text-body3 md:text-body1 sm:text-h5 text-primary-1 relative"
           id="languageButton"
         >
           <span id="selectedLang">EN</span>
           <svg 
             class="w-4 h-4 transition-transform"
             id="langArrow"
-            viewBox="0 0 24 24" 
+            viewBox="0 0 21 24" 
             fill="none" 
             stroke="currentColor"
           >
@@ -78,17 +87,17 @@ const navItems = [
       >
         <div class="bg-primary-2 rounded-lg shadow-xl">
           <button 
-            class="w-full px-4 py-1 text-left text-body3 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
-            data-lang="ID"
+            class="w-full px-3 py-0.5 text-left text-body3 sm:text-body1 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
+            data-lang="id"
           >
-            <span class="group-data-[selected=true]:underline">Bahasa Indonesia</span>
+            <span class="group-data-[selected=true]:underline">{languageNames.id}</span>
           </button>
           <div class="w-full h-[1px] bg-white/20"></div>
           <button 
-            class="w-full px-4 py-1 text-left text-body3 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
-            data-lang="EN"
+            class="w-full px-3 py-0.5 text-left text-body3 sm:text-body1 md:text-h5 text-white hover:bg-primary-2/80 transition-colors group"
+            data-lang="en"
           >
-            <span class="group-data-[selected=true]:underline">English</span>
+            <span class="group-data-[selected=true]:underline">{languageNames.en}</span>
           </button>
         </div>
       </div>
@@ -134,7 +143,7 @@ const navItems = [
         {navItems.map(item => (
           <a 
             href={item.path} 
-            class="text-body3 sm:text-body1 text-white hover:text-primary-2 transition-colors w-full"
+            class="text-body3 sm:text-body1 md:text-h5 text-white hover:text-primary-2 transition-colors w-full"
           >
             {item.name}
           </a>
@@ -161,25 +170,20 @@ const navItems = [
           </button>
     
           <!-- Mobile Language Dropdown -->
-          <div 
-            class="hidden absolute w-full mt-1 z-10"
-            id="mobileLangDropdown"
-          >
-            <div class="bg-primary-2 rounded-lg shadow-xl">
-              <button 
-                class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
-                data-mobile-lang="ID"
-              >
-                Bahasa Indonesia
-              </button>
-              <div class="w-full h-[1px] bg-white/20"></div>
-              <button 
-                class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
-                data-mobile-lang="EN"
-              >
-                English
-              </button>
-            </div>
+          <div class="bg-primary-2 rounded-lg shadow-xl">
+            <button 
+              class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
+              data-mobile-lang="id"
+            >
+              {languageNames.id}
+            </button>
+            <div class="w-full h-[1px] bg-white/20"></div>
+            <button 
+              class="w-full px-1.5 py-2 text-left text-body3 text-white hover:bg-primary-2/80 transition-colors"
+              data-mobile-lang="en"
+            >
+              {languageNames.en}
+            </button>
           </div>
         </div>
       </div>
@@ -198,147 +202,131 @@ const navItems = [
 <div class="h-[60px] sm:h-[80px] md:h-[100px]"></div>
 
 <script>
-  const languageButton = document.getElementById('languageButton');
-  const langDropdown = document.getElementById('langDropdown');
-  const selectedLang = document.getElementById('selectedLang');
-  const langArrow = document.getElementById('langArrow');
-  const langButtons = document.querySelectorAll('[data-lang]');
+  import { setLanguage, getLanguage } from '../stores/language';
+  
+  // Get DOM elements
+  const elements = {
+    desktop: {
+      button: document.getElementById('languageButton'),
+      dropdown: document.getElementById('langDropdown'),
+      arrow: document.getElementById('langArrow'),
+      selected: document.getElementById('selectedLang'),
+      buttons: document.querySelectorAll('[data-lang]')
+    },
+    mobile: {
+      button: document.getElementById('mobileLangButton'),
+      dropdown: document.getElementById('mobileLangDropdown'),
+      arrow: document.getElementById('mobileLangArrow'),
+      selected: document.getElementById('selectedMobileLang'),
+      buttons: document.querySelectorAll('[data-mobile-lang]')
+    },
+    menu: {
+      button: document.getElementById('mobileMenuButton'),
+      close: document.getElementById('closeMenuButton'),
+      menu: document.getElementById('mobileMenu'),
+      backdrop: document.getElementById('menuBackdrop'),
+      items: document.getElementById('mobileMenu')?.querySelectorAll('a')
+    }
+  };
 
-  let isOpen = false;
+  // Initialize language state
+  const currentLang = getLanguage();
+  const langDisplay = currentLang.toUpperCase();
+  elements.desktop.selected!.textContent = langDisplay;
+  elements.mobile.selected!.textContent = langDisplay;
 
-  // Add positioning logic
-  function updateDropdownPosition() {
-    const button = document.getElementById('languageButton');
-    const dropdown = document.getElementById('langDropdown');
-    
-    if (button && dropdown) {
-      const rect = button.getBoundingClientRect();
-      dropdown.style.top = `${rect.bottom + 8}px`;
-      dropdown.style.right = '5%';
+  // Language switching functions
+  function switchLanguage(lang: string) {
+    if (lang && (lang === 'en' || lang === 'id')) {
+      setLanguage(lang);
+      const display = lang.toUpperCase();
+      elements.desktop.selected!.textContent = display;
+      elements.mobile.selected!.textContent = display;
+      location.reload();
     }
   }
 
-  languageButton?.addEventListener('click', (e) => {
+  // Desktop language dropdown
+  let isDesktopOpen = false;
+
+  function updateDropdownPosition() {
+    if (elements.desktop.button && elements.desktop.dropdown) {
+      const rect = elements.desktop.button.getBoundingClientRect();
+      elements.desktop.dropdown.style.top = `${rect.bottom + 8}px`;
+      elements.desktop.dropdown.style.right = '5%';
+    }
+  }
+
+  elements.desktop.button?.addEventListener('click', (e) => {
     e.stopPropagation();
-    isOpen = !isOpen;
-    langDropdown?.classList.toggle('hidden', !isOpen);
-    langArrow?.classList.toggle('rotate-180', isOpen);
-    if (isOpen) {
-      updateDropdownPosition();
-    }
+    isDesktopOpen = !isDesktopOpen;
+    elements.desktop.dropdown?.classList.toggle('hidden', !isDesktopOpen);
+    elements.desktop.arrow?.classList.toggle('rotate-180', isDesktopOpen);
+    if (isDesktopOpen) updateDropdownPosition();
   });
 
-  // Update position on scroll and resize
-  window.addEventListener('scroll', () => {
-    if (isOpen) {
-      updateDropdownPosition();
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (isOpen) {
-      updateDropdownPosition();
-    }
-  });
-
-  langButtons.forEach(button => {
+  elements.desktop.buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const lang = (e.currentTarget as HTMLButtonElement).dataset.lang;
-      if (selectedLang) {
-        if (lang) {
-          selectedLang.textContent = lang;
-        }
-        // Add selected state
-        langButtons.forEach(btn => btn.removeAttribute('data-selected'));
-        button.setAttribute('data-selected', 'true');
-      }
-      isOpen = false;
-      langDropdown?.classList.add('hidden');
-      langArrow?.classList.remove('rotate-180');
+      const lang = (e.currentTarget as HTMLButtonElement).dataset.lang?.toLowerCase();
+      switchLanguage(lang || 'en');
     });
   });
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', () => {
-    if (isOpen) {
-      isOpen = false;
-      langDropdown?.classList.add('hidden');
-      langArrow?.classList.remove('rotate-180');
-    }
-  });
-
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const closeMenuButton = document.getElementById('closeMenuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuBackdrop = document.getElementById('menuBackdrop');
-  const mobileLangButton = document.getElementById('mobileLangButton');
-  const mobileLangDropdown = document.getElementById('mobileLangDropdown');
-  const mobileLangArrow = document.getElementById('mobileLangArrow');
-  const selectedMobileLang = document.getElementById('selectedMobileLang');
-
+  // Mobile menu and language handling
   let isMobileMenuOpen = false;
   let isMobileLangOpen = false;
 
-  function openMobileMenu() {
-    mobileMenu?.classList.remove('translate-x-full');
-    menuBackdrop?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    isMobileMenuOpen = true;
+  function handleMobileMenu(open: boolean) {
+    isMobileMenuOpen = open;
+    elements.menu.menu?.classList.toggle('translate-x-full', !open);
+    elements.menu.backdrop?.classList.toggle('hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (!open) handleMobileLang(false);
   }
 
-  function closeMobileMenu() {
-    mobileMenu?.classList.add('translate-x-full');
-    menuBackdrop?.classList.add('hidden');
-    document.body.style.overflow = '';
-    isMobileMenuOpen = false;
-    closeMobileLangDropdown();
+  function handleMobileLang(open: boolean) {
+    isMobileLangOpen = open;
+    elements.mobile.dropdown?.classList.toggle('hidden', !open);
+    elements.mobile.arrow?.classList.toggle('rotate-180', open);
   }
 
-  function toggleMobileLangDropdown() {
-    isMobileLangOpen = !isMobileLangOpen;
-    mobileLangDropdown?.classList.toggle('hidden', !isMobileLangOpen);
-    mobileLangArrow?.classList.toggle('rotate-180', isMobileLangOpen);
-  }
-
-  function closeMobileLangDropdown() {
-    isMobileLangOpen = false;
-    mobileLangDropdown?.classList.add('hidden');
-    mobileLangArrow?.classList.remove('rotate-180');
-  }
-
-  mobileMenuButton?.addEventListener('click', openMobileMenu);
-  closeMenuButton?.addEventListener('click', closeMobileMenu);
-  menuBackdrop?.addEventListener('click', closeMobileMenu);
-  mobileLangButton?.addEventListener('click', (e) => {
+  elements.menu.button?.addEventListener('click', () => handleMobileMenu(true));
+  elements.menu.close?.addEventListener('click', () => handleMobileMenu(false));
+  elements.menu.backdrop?.addEventListener('click', () => handleMobileMenu(false));
+  
+  elements.mobile.button?.addEventListener('click', (e) => {
     e.stopPropagation();
-    toggleMobileLangDropdown();
+    handleMobileLang(!isMobileLangOpen);
   });
 
-  // Update both mobile and desktop language selectors
-  const mobileLangButtons = document.querySelectorAll('[data-mobile-lang]');
-  mobileLangButtons.forEach(button => {
+  elements.mobile.buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-      const lang = (e.currentTarget as HTMLButtonElement).dataset.mobileLang;
-      if (selectedLang && selectedMobileLang && lang) {
-        selectedLang.textContent = lang;
-        selectedMobileLang.textContent = lang;
-        closeMobileLangDropdown();
-      }
+      const lang = (e.currentTarget as HTMLButtonElement).dataset.mobileLang?.toLowerCase();
+      switchLanguage(lang || 'en');
     });
   });
 
   // Close dropdowns when clicking outside
   document.addEventListener('click', () => {
+    if (isDesktopOpen) {
+      isDesktopOpen = false;
+      elements.desktop.dropdown?.classList.add('hidden');
+      elements.desktop.arrow?.classList.remove('rotate-180');
+    }
     if (isMobileLangOpen) {
-      closeMobileLangDropdown();
+      handleMobileLang(false);
     }
   });
 
+  // Update dropdown position on scroll/resize
+  ['scroll', 'resize'].forEach(event => {
+    window.addEventListener(event, () => {
+      if (isDesktopOpen) updateDropdownPosition();
+    });
+  });
+
   // Close menu when clicking menu items
-  const mobileMenuItems = mobileMenu?.querySelectorAll('a');
-  mobileMenuItems?.forEach(item => {
-    item.addEventListener('click', closeMobileMenu);
+  elements.menu.items?.forEach(item => {
+    item.addEventListener('click', () => handleMobileMenu(false));
   });
 </script>

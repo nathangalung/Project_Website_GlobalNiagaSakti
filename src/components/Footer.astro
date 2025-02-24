@@ -1,76 +1,93 @@
 ---
+import { translations } from '../stores/translation';
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
+
+// Simplify navigation items - no need for language-specific arrays
 const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Products', path: '/product' },
-  { name: 'Customers', path: '/customer' },
-  { name: 'Contact', path: '/contact' },
+  { path: '/', name: t.nav.home },
+  { path: '/about', name: t.nav.about },
+  { path: '/product', name: t.nav.products },
+  { path: '/customer', name: t.nav.customers },
+  { path: '/contact', name: t.nav.contact }
 ];
 
+// Simplify contact info - use translations directly
+const contactInfo = {
+  callCenter: t.footer.contact.callCenter,
+  whatsapp: t.footer.contact.whatsapp,
+  email: t.footer.contact.email,
+  copyright: t.footer.contact.copyright
+};
+
+// Simplify legal links - use translations directly
 const legalLinks = [
-  { name: 'Privacy Policy', path: '/pnp' },
-  { name: 'Terms & Condition', path: '/tnc' },
-  { name: 'Disclaimer', path: '/disclaimer' },
+  { path: '/pnp', name: t.footer.legal.privacy },
+  { path: '/tnc', name: t.footer.legal.terms },
+  { path: '/disclaimer', name: t.footer.legal.disclaimer }
 ];
 ---
 
 <footer class="w-full bg-primary-1 text-white font-inter">
   <div class="max-w mx-auto px-[5%] py-[2%]">
-    <!-- Main Grid -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-      <!-- Company Info - Left Section -->
+      <!-- Company Info -->
       <div class="md:col-span-5 md:pl-0">
         <div class="flex items-center gap-2 mb-4">
           <img src="/images/logo/White.png" alt="Logo" class="h-10 w-10" />
-          <h3 class="text-h5 sm:text-h4 md:text-h3">PT GLOBAL NIAGA SAKTI</h3>
+          <h3 class="text-body3 sm:text-body1 md:text-h5">PT GLOBAL NIAGA SAKTI</h3>
         </div>
         
-        <address class="text-body4 md:text-body2 leading-relaxed not-italic mb-6">
+        <address class="text-body6 md:text-body4 sm:text-body2 leading-relaxed not-italic mb-6">
           Gedung Wirausaha Lantai 1, Unit 104<br />
           Jl. HR. Rasuna Said Kav. C5<br />
           Kuningan, Setiabudi<br />
           Jakarta Selatan 12920
         </address>
+
+        <p class="text-body6 sm:text-body4 text-white/90 mt-auto md:mt-8">
+          {contactInfo.copyright}
+        </p>
       </div>
 
-      <!-- Navigation - Middle Section -->
+      <!-- Navigation -->
       <div class="md:col-span-3 flex flex-col gap-2">
         {navItems.map(item => (
           <a 
             href={item.path} 
-            class="text-body3 sm:text-body1 md:text-h5 hover:text-primary-2 transition-colors"
+            class="text-body5 sm:text-body3 md:text-body1 hover:text-primary-2 transition-colors"
           >
             {item.name}
           </a>
         ))}
       </div>
 
-      <!-- Contact Info - Right Section -->
-      <div class="md:col-span-4">
-        <h4 class="text-body1 sm:text-h5 md:text-h4 underline mb-4">
-          Contact Us
+      <!-- Contact Info -->
+      <div class="md:col-span-4 flex flex-col">
+        <h4 class="text-body3 sm:text-body1 md:text-h5 underline mb-4">
+          {t.footer.contact.title}
         </h4>
         
-        <div class="flex flex-col gap-3 text-body3 md:text-body1 mb-4">
+        <div class="flex flex-col gap-3 text-body5 sm:text-body3 mb-4">
           <div class="flex items-start gap-3">
             <svg class="w-6 h-6 mt-1 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
             </svg>
             <div class="flex flex-col gap-1">
-              <div>Call Center : 021-5099 6969 (ext. 1249)</div>
-              <div>Whatsapp : 0811-999-0991 (Chat Only)</div>
+              <div>{contactInfo.callCenter}</div>
+              <div>{contactInfo.whatsapp}</div>
             </div>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
-            <span>sales@globalsakti.com</span>
+            <span>{contactInfo.email}</span>
           </div>
         </div>
 
-         <!-- Legal Links -->
-         <div class="flex flex-wrap gap-x-3 gap-y-2 text-body4">
+        <!-- Legal Links -->
+        <div class="flex flex-wrap gap-x-3 gap-y-2 text-body6 sm:text-body4 mt-auto md:mt-8">
           {legalLinks.map((link, index) => (
             <>
               <a 
@@ -86,20 +103,17 @@ const legalLinks = [
           ))}
         </div>
       </div>
-
-      <!-- Copyright - Bottom Section (Mobile) -->
-      <div class="col-span-1 md:hidden">
-        <p class="text-body4 text-white/90">
-          PT Global Niaga Sakti © 2025 All Rights Reserved.
-        </p>
-      </div>
-
-      <!-- Copyright - Desktop Section -->
-      <div class="hidden md:block md:col-span-4">
-        <p class="text-body4 text-white/90">
-          PT Global Niaga Sakti © 2025 All Rights Reserved.
-        </p>
-      </div>
     </div>
   </div>
 </footer>
+
+<script>
+  import { getLanguage } from '../stores/language';
+
+  // Listen for custom language change event
+  window.addEventListener('languageChanged', () => {
+    const currentLang = getLanguage();
+    // Reload page to reflect language change
+    location.reload();
+  });
+</script>

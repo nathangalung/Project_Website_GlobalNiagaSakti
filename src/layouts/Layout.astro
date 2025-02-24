@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import type { Language } from '../stores/language';
 import '../styles/global.css';
 
 interface Props {
@@ -8,11 +9,12 @@ interface Props {
   description: string;
 }
 
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

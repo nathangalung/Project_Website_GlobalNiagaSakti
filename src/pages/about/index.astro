@@ -1,8 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
 ---
 
-<Layout title="About Us - PT Global Niaga Sakti" description="Learn more about PT Global Niaga Sakti">
+<Layout title={t.meta.title.about} description={t.meta.description.about}>
   <div class="min-h-[calc(100vh-396px)] bg-white py-6 sm:py-8 md:py-12">
     <div class="max-w mx-auto px-[10%]">
       <!-- Top Section -->
@@ -22,21 +26,21 @@ import Layout from '../../layouts/Layout.astro';
         <!-- Right Column -->
         <div class="flex flex-col gap-4 sm:gap-6">
           <p class="text-primary-1 text-body4 md:text-body2 text-justify !text-justify">
-            <span class="text-body3 md:text-body1">PT Global Niaga Sakti</span> is your trusted partner in marine supply and industrial solutions. With a strong commitment to quality and reliability, we provide essential products and services to support the maritime industry, offshore operations, and general industrial needs.
+            <span class="text-body3 md:text-body1">PT Global Niaga Sakti</span> {t.about.intro.text1}
           </p>
           
           <p class="text-primary-1 text-body4 md:text-body2 text-justify !text-justify">
-            Our expertise spans a wide range of marine supplies, from safety equipment and navigation tools to spare parts and provisions. Beyond the maritime sector, we also cater to various industries by delivering high-quality materials, tools, and equipments.  
+            {t.about.intro.text2}
           </p>
 
           <p class="text-primary-1 text-body3 md:text-body1 text-justify !text-justify">
-            At Global Niaga Sakti, we prioritize customer satisfaction by ensuring timely deliveries, competitive pricing, and exceptional service. Whether you're in the marine industry or need reliable industrial supplies, we are here to provide the right solutions tailored to your requirements.
+            {t.about.intro.text3}
           </p>
         </div>
       </div>
 
       <h1 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mb-4 sm:mb-8 md:mb-12 mt-2 sm:mt-4 md:mt-8">
-        Empowering Industries with Precision and Innovation
+        {t.about.intro.title}
       </h1>
 
       <!-- Bottom Section -->
@@ -45,7 +49,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="lg:col-span-5">
           <div class="bg-primary-1 text-white rounded-xl p-5 sm:p-6 lg:p-8 h-full flex items-center justify-center">
             <p class="text-body4 md:text-body2 text-justify !text-justify">
-              PT Global Niaga Sakti is a company that consistently provides innovative solutions while maintaining a commitment to always prioritize quality, precision, and accuracy in all of its services. Always being a reliable partner that can be counted on by our customers.
+              {t.about.vision.box1}
             </p>
           </div>
         </div>
@@ -53,7 +57,7 @@ import Layout from '../../layouts/Layout.astro';
         <!-- Center Box -->
         <div class="lg:col-span-2 flex items-center justify-center py-2 lg:py-0">
           <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center">
-            Vision<br />and<br />Mission
+            {t.about.vision.title}
           </h3>
         </div>
 
@@ -61,7 +65,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="lg:col-span-5">
           <div class="bg-primary-1 text-white rounded-xl p-5 sm:p-6 lg:p-8 h-full flex items-center justify-center">
             <p class="text-body4 md:text-body2 text-justify !text-justify">
-              PT Global Niaga Sakti provides high-quality products and services that are always relied upon by customers both domestically and internationally. Supporting customer efficiency and productivity by offering comprehensive services aimed at long-term cooperation, while maintaining customer trust and satisfaction.
+              {t.about.vision.box2}
             </p>
           </div>
         </div>

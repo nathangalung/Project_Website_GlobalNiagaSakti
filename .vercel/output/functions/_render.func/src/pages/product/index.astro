@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
+
+const products = [
+  { title: t.products.types.engine, image: '/images/product/Engine.png' },
+  { title: t.products.types.safety, image: '/images/product/Safety.png' },
+  { title: t.products.types.electric, image: '/images/product/Electric.png' },
+  { title: t.products.types.deck, image: '/images/product/Deck.png' },
+  { title: t.products.types.cabin, image: '/images/product/Cabin.png' },
+  { title: t.products.types.medical, image: '/images/product/Medical.png' },
+  { title: t.products.types.lubricants, image: '/images/product/Lubricants.png' },
+  { title: t.products.types.sealing, image: '/images/product/Sealing.png' }
+];
+---
+
+<Layout title={t.meta.title.products} description={t.meta.description.products}>
+  <div class="min-h-[calc(100vh-396px)] bg-white py-6 sm:py-8 md:py-12">
+    <div class="max-w mx-auto px-[10%] space-y-8">
+      <!-- Heading -->
+      <h1 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mb-2 sm:mb-8 md:mb-12">
+        {t.products.title}
+      </h1>
+
+      <div class="flex flex-col gap-8">
+        {/* First 6 products */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {products.slice(0, 6).map(product => (
+            <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow h-[200px] sm:h-[250px] md:h-[275px]">
+              <div class="p-4 sm:p-6 flex items-center justify-center h-[140px] sm:h-[180px] bg-primary-2/20">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  class="max-w-[80%] sm:max-w-[90%] max-h-[80%] sm:max-h-[90%] object-contain transform scale-125 sm:scale-150"
+                  loading="lazy"
+                />
+              </div>
+              <div class="bg-primary-1 text-white p-2 sm:p-3 md:p-4 flex-1 flex flex-col items-center justify-center">
+                <h4 class="text-h5 sm:text-h4 md:text-h3 text-center">
+                  {product.title}
+                </h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      
+        {/* Last 2 products - centered */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {/* Empty column for large screens */}
+          <div class="hidden lg:block"></div>
+          
+          {/* Two centered products */}
+          <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 w-full lg:w-2/3 mx-auto">
+            {products.slice(6, 8).map(product => (
+              <div class="bg-gray-50 rounded-xl overflow-hidden flex flex-col shadow-lg hover:shadow-xl transition-shadow h-[200px] sm:h-[250px] md:h-[275px]">
+                <div class="p-4 sm:p-6 flex items-center justify-center h-[140px] sm:h-[180px] bg-primary-2/20">
+                  <img 
+                    src={product.image} 
+                    alt={product.title}
+                    class="max-w-[80%] sm:max-w-[90%] max-h-[80%] sm:max-h-[90%] object-contain transform scale-125 sm:scale-150"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="bg-primary-1 text-white p-2 sm:p-3 md:p-4 flex-1 flex flex-col items-center justify-center">
+                  <h4 class="text-h5 sm:text-h4 md:text-h3 text-center">
+                    {product.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        {/* Empty column for large screens */}
+        <div class="hidden lg:block"></div>
+      </div>
+
+        <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center md:mt-4">
+          {t.products.footer}
+        </h3>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+</style>

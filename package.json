@@ -2,6 +2,7 @@
   "name": "afraid-axis",
   "version": "0.0.1",
   "dependencies": {
+    "@astrojs/vercel": "^8.0.7",
     "@fontsource/inter": "^5.1.1",
     "astro": "^5.2.5"
   },

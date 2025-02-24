@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
+
+const customers = [
+  [
+    { name: 'ISNA AGUNG PERMATA', logo: '/images/customer/IAP.png', colSpan: 1 },
+    { name: 'KAS Shipping', logo: '/images/customer/KAS.png', colSpan: 1 }
+  ],
+  [
+    { name: 'PELITA GLOBAL LOGISTIK', logo: '/images/customer/Pelita.png', colSpan: 1 },
+    { name: 'IMC Ship Management', logo: '/images/customer/IMC.png', colSpan: 1 },
+    { name: 'SPN', logo: '/images/customer/SPN.png', colSpan: 1 }
+  ],
+  [
+    { name: 'KASEN', logo: '/images/customer/KASEN.png', colSpan: 1 },
+    { name: 'Niterra Mobility Indonesia', logo: '/images/customer/Niterra.png', colSpan: 1 }
+  ]
+];
+---
+
+<Layout title={t.meta.title.customers} description={t.meta.description.customers}>
+  <div class="min-h-[calc(100vh-396px)] bg-white py-6 sm:py-8 md:py-12">
+    <div class="max-w mx-auto px-[10%] space-y-8">
+      <!-- Heading -->
+      <h1 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center mx-auto">
+        {t.customers.title}
+      </h1>
+
+      <!-- Customer Logos Grid -->
+      <div class="flex flex-col gap-4 max-w-[1280px] mx-auto">
+        <!-- First Row - 2 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:max-w-[67%] mx-auto">
+          {customers[0].map(customer => (
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
+              <img 
+                src={customer.logo} 
+                alt={customer.name}
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        <!-- Second Row - 3 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+          {customers[1].map(customer => (
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
+              <img 
+                src={customer.logo} 
+                alt={customer.name}
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        <!-- Third Row - 2 containers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:max-w-[67%] mx-auto">
+          {customers[2].map(customer => (
+            <div class="bg-white border border-primary-1 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:border-primary-1/70 transition-colors h-[90px] sm:h-[100px] md:h-[120px]">
+              <img 
+                src={customer.logo} 
+                alt={customer.name}
+                class="w-auto max-h-[45px] sm:max-h-[60px] md:max-h-[75px] object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <h3 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 text-center"></>
+        {t.customers.footer}
+      </h3>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+</style>

@@ -1,0 +1,1 @@
+function t(e){document.cookie=`selectedLang=${e};path=/;max-age=31536000`,window.location.reload()}function a(){return document.cookie.split("; ").find(n=>n.startsWith("selectedLang="))?.split("=")[1]==="id"?"id":"en"}export{a as g,t as s};

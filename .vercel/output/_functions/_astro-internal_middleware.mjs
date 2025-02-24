@@ -7,15 +7,20 @@ import 'clsx';
 import 'cookie';
 
 const onRequest$1 = defineMiddleware(async ({ cookies, request }, next) => {
-  const lang = cookies.get("selectedLang")?.value || "en";
-  if (!cookies.has("selectedLang")) {
-    cookies.set("selectedLang", lang, {
-      path: "/",
-      maxAge: 60 * 60 * 24 * 365,
-      sameSite: "strict"
-    });
+  try {
+    const lang = cookies.get("selectedLang")?.value || "en";
+    if (!cookies.has("selectedLang")) {
+      cookies.set("selectedLang", lang, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+        sameSite: "lax"
+      });
+    }
+    return await next();
+  } catch (error) {
+    console.error("Middleware error:", error);
+    return next();
   }
-  return next();
 });
 
 const onRequest = sequence(

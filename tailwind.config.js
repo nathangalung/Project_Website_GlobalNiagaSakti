@@ -25,8 +25,10 @@ export default {
           'body2': ['18px', { lineHeight: '24px', fontWeight: '400' }],
           'body3': ['14px', { lineHeight: '20px', fontWeight: '700' }],
           'body4': ['14px', { lineHeight: '20px', fontWeight: '400' }],
-          'body5': ['10px', { lineHeight: '16px', fontWeight: '700' }],
-          'body6': ['10px', { lineHeight: '16px', fontWeight: '400' }],
+          'body5': ['16px', { lineHeight: '22px', fontWeight: '700' }],
+          'body6': ['16px', { lineHeight: '22px', fontWeight: '400' }],
+          'body7': ['12px', { lineHeight: '18px', fontWeight: '700' }],
+          'body8': ['12px', { lineHeight: '18px', fontWeight: '400' }],
           
           // Mobile (70% of desktop size)
           'mobile-h1': ['25px', { lineHeight: '32px', fontWeight: '700' }],

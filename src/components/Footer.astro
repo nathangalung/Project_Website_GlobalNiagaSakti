@@ -35,7 +35,7 @@ const legalLinks = [
       <!-- Company Info -->
       <div class="md:col-span-5 md:pl-0">
         <div class="flex items-center gap-2 mb-2 md:mb-4">
-          <img src="/images/logo/White.png" alt="Logo" class="h-10 w-10 -ml-1" />
+          <img src="/images/logo/White.png" alt="Logo" class="h-10 w-10 -ml-1.5" />
           <h3 class="text-body3 md:text-body1">PT GLOBAL NIAGA SAKTI</h3>
         </div>
         
@@ -54,7 +54,7 @@ const legalLinks = [
       <!-- Navigation - Updated for mobile grid -->
       <div class="md:col-span-3 mb-4 md:mb-0">
         <div class="grid grid-cols-3 md:flex md:flex-col gap-2">
-          {navItems.map((item, index) => (
+          {navItems.map((item, index) => ( 
             <a 
               href={item.path} 
               class={`text-body4 md:text-body4 hover:text-primary-2 transition-colors ${

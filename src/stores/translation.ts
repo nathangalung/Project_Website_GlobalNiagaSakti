@@ -32,8 +32,8 @@ export const translations = {
         footer: {
             contact: {
                 title: "Contact Us",
-                callCenter: "Call Center : 021-5099 6969 (ext. 1249)",
-                whatsapp: "Whatsapp : 0811-999-0991 (Chat Only)",
+                whatsapp: "0811-999-0991 (Chat Only)",
+                callCenter: "021-5099 6969 (ext. 1249)",
                 email: "sales@globalsakti.com",
                 copyright: "PT Global Niaga Sakti © 2025 All Rights Reserved."
             },
@@ -326,8 +326,8 @@ export const translations = {
         footer: {
             contact: {
                 title: "Hubungi Kami",
-                callCenter: "Call Center : 021-5099 6969 (ext. 1249)",
-                whatsapp: "Whatsapp : 0811-999-0991 (Chat Only)",
+                whatsapp: "0811-999-0991 (Chat Only)",
+                callCenter: "021-5099 6969 (ext. 1249)",
                 email: "sales@globalsakti.com",
                 copyright: "PT Global Niaga Sakti © 2025 Hak Cipta Dilindungi."
             },
@@ -343,10 +343,10 @@ export const translations = {
                 cta: "Hubungi Kami"
             },
             content: {
-                tagline: "Bersama PT Global Niaga Sakti, Anda tidak hanya mendapatkan pemasok, tetapi juga mitra yang berkomitmen untuk mendukung kesuksesan Anda.",
+                tagline: "Bersama PT Global Niaga Sakti, Anda tidak hanya mendapatkan penyedia barang kebutuhan, tetapi juga mitra yang berkomitmen untuk mendukung kesuksesan Anda.",
                 products: {
                     title: "Produk Kami",
-                    description: "Kami menyediakan solusi industri yang lengkap dan disesuaikan dengan kebutuhan Anda. Dari penyediaan produk hingga layanan rekayasa, tim kami menjamin keunggulan dalam setiap tahap pelayanan. Dengan mengutamakan inovasi dan kualitas, kami menyajikan solusi handal untuk Anda.",
+                    description: "Kami menyediakan solusi industri yang lengkap dan disesuaikan dengan kebutuhan Anda. Dari penyediaan produk hingga solusi teknikal, tim kami menjamin keunggulan dalam setiap tahap pelayanan. Dengan mengutamakan inovasi dan kualitas, kami menyajikan solusi handal untuk Anda.",
                     cta: "Lihat Selengkapnya"
                 },
                 customers: {
@@ -359,7 +359,7 @@ export const translations = {
         about: {
             intro: {
                 title: "Mendukung Kemajuan Industri melalui Inovasi dan Ketepatan",
-                text1: "adalah mitra terpercaya Anda dalam penyediaan kebutuhan maritim dan solusi industri. Dengan komitmen kuat terhadap kualitas dan keandalan, kami menyediakan produk dan layanan penting untuk mendukung industri maritim, operasi lepas pantai, dan kebutuhan industri secara umum.",
+                text1: "adalah mitra terpercaya Anda dalam penyediaan kebutuhan maritim dan solusi industri. Dengan komitmen tinggi terhadap kualitas dan keandalan, kami menyediakan produk dan layanan penting untuk mendukung industri maritim, operasi lepas pantai, dan kebutuhan industri secara umum.",
                 text2: "Keahlian kami mencakup berbagai macam perlengkapan maritim, mulai dari peralatan keselamatan dan alat navigasi hingga suku cadang dan kebutuhan konsumsi. Selain sektor maritim, kami juga melayani berbagai industri dengan menyediakan bahan, alat, dan perlengkapan berkualitas tinggi.",
                 text3: "Di Global Niaga Sakti, kami mengutamakan kepuasan pelanggan dengan memastikan pengiriman tepat waktu, harga yang kompetitif, dan layanan yang luar biasa. Apakah Anda berada di industri maritim atau membutuhkan pasokan industri yang dapat diandalkan, kami hadir untuk memberikan solusi yang tepat sesuai dengan kebutuhan Anda."
             },
@@ -372,19 +372,19 @@ export const translations = {
         products: {
             title: "Jelajahi produk berkualitas tinggi kami yang dirancang untuk memenuhi kebutuhan berbagai industri.",
             types: {
-                engine: "Perlengkapan Mesin",
-                safety: "Peralatan Keselamatan",
-                electric: "Perlengkapan Listrik",
-                deck: "Perlengkapan Dek",
-                cabin: "Perlengkapan Kabin",
-                medical: "Perlengkapan Medis",
-                lubricants: "Pelumas dan Kalibrasi Keselamatan",
-                sealing: "Elemen Penyegel"
+                engine: "Engine Supplies",
+                safety: "Safety Equipment",
+                electric: "Electric Supplies",
+                deck: "Deck Supplies",
+                cabin: "Cabin Supplies",
+                medical: "Medical Store Supplies",
+                lubricants: "Safety Lubricants and Calibration",
+                sealing: "Sealing Element"
             },
             footer: "dan sesuai permintaan klien"
         },
         customers: {
-            title: "Dipercaya oleh para pemimpin industri di bidang logistik maritim, manufaktur, dan lainnya, pelanggan kami adalah inti dari segala yang kami lakukan.",
+            title: "Dipercaya oleh berbagai industri di bidang logistik maritim, manufaktur, dan lainnya, kepuasan pelanggan kami adalah inti dari segala yang kami lakukan.",
             footer: "dan masih banyak perusahaan lainnya"
         },
         contact: {

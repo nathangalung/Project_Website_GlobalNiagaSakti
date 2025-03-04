@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../stores/translation';
+
+const currentLang = Astro.cookies.get('selectedLang')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations];
+---
+
+<Layout title={t.meta.title.terms} description={t.meta.description.terms}>
+  <main class="w-full bg-white">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-12">
+      <h1 class="text-h4 sm:text-h3 md:text-h2 text-primary-1 mb-6">
+        {t.legal.terms.title}
+      </h1>
+
+      <div class="space-y-8 text-body4 md:text-body2">
+        <p class = "text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+            {t.legal.terms.welcome}
+        </p>
+        <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+            {t.legal.terms.intro1}<a href="https://globalsakti.com/" class="underline hover:text-primary-2 transition-colors">{t.legal.terms.link1}</a>.
+        </p>
+        <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+            {t.legal.terms.intro2}
+        </p>
+        <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+            {t.legal.terms.intro3}<a href="https://www.privacypolicyonline.com/terms-conditions-generator/" class="underline hover:text-primary-2 transition-colors">{t.legal.terms.link2}</a>.
+        </p>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.cookies.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.cookies.text1}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.cookies.text2}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.license.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.text1}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.restrictions.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.license.restrictions.point[0]}</li>
+                <li>{t.legal.terms.sections.license.restrictions.point[1]}</li>
+                <li>{t.legal.terms.sections.license.restrictions.point[2]}</li>
+                <li>{t.legal.terms.sections.license.restrictions.point[3]}</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.text2}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.text3}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.text4}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.warranties.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.license.warranties.point[0]}</li>
+                <li>{t.legal.terms.sections.license.warranties.point[1]}</li>
+                <li>{t.legal.terms.sections.license.warranties.point[2]}</li>
+                <li>{t.legal.terms.sections.license.warranties.point[3]}.</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.license.text5}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.hyperlinking.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.permitted.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.hyperlinking.permitted.point[0]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.permitted.point[1]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.permitted.point[2]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.permitted.point[3]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.permitted.point[4]}</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.text1}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.consideration.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[0]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[1]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[2]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[3]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[4]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[5]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.consideration.point[6]}.</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.text2}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.text3}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.approval.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.hyperlinking.approval.point[0]}</li>
+                <li>{t.legal.terms.sections.hyperlinking.approval.point[1]}r</li>
+                <li>{t.legal.terms.sections.hyperlinking.approval.point[2]}</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.hyperlinking.text4}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.iframes.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.iframes.text}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.liability.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.liability.text}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.reservation.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.reservation.text}
+          </section>
+
+          <section>
+            <h2 class="text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.removal.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.removal.text1}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.removal.text2}
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-h5 sm:text-h4 md:text-h3 text-primary-1 mb-4">{t.legal.terms.sections.disclaimer.title}</h2>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.disclaimer.permission.title}
+            </p>
+            <ul class="list-disc pl-10 text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                <li>{t.legal.terms.sections.disclaimer.permission.point[0]}</li>
+                <li>{t.legal.terms.sections.disclaimer.permission.point[1]}</li>
+                <li>{t.legal.terms.sections.disclaimer.permission.point[2]}</li>
+                <li>{t.legal.terms.sections.disclaimer.permission.point[3]}</li>
+            </ul>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.disclaimer.text1}
+            </p>
+            <p class="text-body4 md:text-body2 leading-relaxed text-primary-1 text-justify mb-6 flex-grow">
+                {t.legal.terms.sections.disclaimer.text2}
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </Layout>

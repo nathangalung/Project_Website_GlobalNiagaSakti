@@ -15,7 +15,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "type": "module"
 }

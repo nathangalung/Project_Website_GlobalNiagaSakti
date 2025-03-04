@@ -1,0 +1,16 @@
+---
+const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID || 'G-XZEJPDC2G2';
+---
+
+<Fragment>
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+  <script define:vars={{ googleAnalyticsId }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', googleAnalyticsId, {
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
+</Fragment>

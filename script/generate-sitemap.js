@@ -23,8 +23,8 @@ const today = new Date().toISOString().slice(0, 10);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 ${pages.map(page => `  <url>
     <loc>${domain}${page.url}</loc>
@@ -34,5 +34,5 @@ ${pages.map(page => `  <url>
 </urlset>
 `;
 
-writeFileSync(join(__dirname, '../public/sitemap.xml'), sitemap);
+writeFileSync(join(__dirname, '../public/sitemap.xml'), sitemap, 'utf8');
 console.log('Sitemap generated!');
